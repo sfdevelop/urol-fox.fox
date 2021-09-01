@@ -11,23 +11,24 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Route::redirect('/', '/ru');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => '{language}'], function () {
+    Auth::routes();
+    Route::get('/', 'HomeController@index')->name('main');
 });
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 //admin panel
-$groupData = [
-    'namespace' => 'Admin',
-    'prefix' => 'administrator',
-    'middleware' => ['auth', 'role:admin'],
-];
+    $groupData = [
+        'namespace' => 'Admin',
+        'prefix' => 'admin',
+        'middleware' => ['auth', 'role:admin'],
+    ];
 
-Route::group($groupData, function () {
-    Route::get('/', 'AdminController@index')->name('admin.enter');
-});
+    Route::group($groupData, function () {
+        Route::get('/', 'AdminController@index')->name('admin.enter');
+        Route::resource('news', 'AdminPostController')->names('admin.news')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
+    });

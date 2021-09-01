@@ -8,13 +8,18 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2.5|^8.0",
+        "php": "^7.3.9|^8.0",
+        "astrotomic/laravel-translatable": "^11.9",
+        "ckeditor/ckeditor": "^4.16",
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20.26",
         "laravel/tinker": "^2.5",
+        "netojose/laravel-bootstrap-4-forms": "^3.0",
         "spatie/laravel-permission": "^4.4"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
+        "barryvdh/laravel-ide-helper": "2.7.*",
         "facade/ignition": "^1.16.15",
         "fakerphp/faker": "^1.9.1",
         "laravel/ui": "1.0",
