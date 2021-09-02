@@ -1,0 +1,28 @@
+.card-content a {
+    color: #3f51b5 !important;
+}
+
+a.waves-light {
+    color: white !important;
+}
+
+.is-invalid {
+    border-color: red !important;
+}
+
+.alert-danger {
+    font-size: 85%;
+    color: red;
+}
+
+.card .card-content p {
+    font-size: 15px !important;
+}
+.paginate nav{
+    background: none!important;
+    box-shadow: none!important;
+}
+.paginate .page-footer, .pagination li.active{
+    background: none!important;
+    color: black!important;
+}

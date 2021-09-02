@@ -4,6 +4,7 @@
 
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/page-users.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
 @endsection
 
 @section('new-js')
@@ -22,8 +23,9 @@
                             <h5 class="breadcrumbs-title mt-0 mb-0"><span>Новости</span></h5>
                         </div>
                         <div class="col s2 m6 l6 right">
-                            <a href="{{route('admin.news.create')}}" class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right">
-                                <i class="material-icons">add</i>
+                            <a href="{{route('admin.news.create')}}"
+                               class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right pulse">
+                                <i class="material-icons ">add</i>
                             </a>
                         </div>
                     </div>
@@ -46,19 +48,39 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>Alvin</td>
-                                                <td>Eclair</td>
-                                                <td>$0.87</td>
-                                                <td class="right">
-                                                    <a href="">
-                                                        <i class="material-icons dp48">create</i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            @forelse ( $paginator as $item)
+                                                <tr>
+                                                    <td>{{$item->translate('en', true)->title}}</td>
+                                                    <td>
+                                                        @if ($item->public==1)
+                                                              <span class="chip green lighten-5">
+                                                                    <span class="green-text">Опубликовано</span>
+                                                              </span>
+                                                        @else
+                                                            <span class="chip red lighten-5">
+                                                                <span class="red-text">Не опубликовано</span>
+                                                            </span>
+                                                        @endif
+                                                    </td>
+                                                    <td>{{$item->sort}}</td>
+                                                    <td class="right">
+                                                        <a href="{{route('admin.news.edit', $item->id)}}">
+                                                            <i class="material-icons dp48">create</i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+
+                                            @endforelse
+
                                             </tbody>
                                         </table>
                                     </div>
+{{--                                    <div class="paginate">--}}
+{{--                                        @if ($paginator->total() > $paginator->count())--}}
+{{--                                            {{ $paginator->links() }}--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>

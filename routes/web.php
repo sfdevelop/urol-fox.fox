@@ -14,12 +14,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/ru');
-
-Route::group(['prefix' => '{language}'], function () {
-    Auth::routes();
-    Route::get('/', 'HomeController@index')->name('main');
-});
+//Route::redirect('/', '/ru');
+//
+//Route::group(['prefix' => '{language}'], function () {
+//    Auth::routes();
+//    Route::get('/', 'HomeController@index')->name('main');
+//});
 
 //admin panel
     $groupData = [
@@ -32,3 +32,5 @@ Route::group(['prefix' => '{language}'], function () {
         Route::get('/', 'AdminController@index')->name('admin.enter');
         Route::resource('news', 'AdminPostController')->names('admin.news')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
     });
+
+

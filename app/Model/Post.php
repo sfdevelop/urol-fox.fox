@@ -16,6 +16,8 @@ class Post extends Model implements TranslatableContract
     ];
     protected $fillable = [
         'id',
+        'public',
+        'sort',
         'created_at',
         'updated_at',
     ];
