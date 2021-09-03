@@ -12,7 +12,8 @@
                     src="{{asset('administrator/assets/images/logo/materialize-logo.png')}}" alt="logo"
                 />
                 <span
-                    class="logo-text hide-on-med-and-down">Materialize
+                    class="logo-text hide-on-med-and-down">
+                    {{env('APP_NAME')}}
                 </span>
             </a>
         </h1>

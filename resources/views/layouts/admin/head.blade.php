@@ -12,8 +12,6 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('administratoristrator/assets/vendors/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/animate-css/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/charts-chartist.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/chartist-js/chartist-plugin-tooltip.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/vertical-modern-menu-template/materialize.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/vertical-modern-menu-template/style.min.css')}}">

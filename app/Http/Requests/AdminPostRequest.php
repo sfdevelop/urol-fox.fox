@@ -24,8 +24,13 @@ class AdminPostRequest extends FormRequest
      */
     public function rules()
     {
+        $rules = [
+            'file' => 'mimes:jpeg,bmp,png,JPG,JPEG,webp'
+        ];
+
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.title'] = 'required';
+
         }
 
         return $rules;

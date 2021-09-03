@@ -10,6 +10,9 @@ class PostTranslation  extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'seo_title',
+        'seo_key',
+        'seo_description',
     ];
 }

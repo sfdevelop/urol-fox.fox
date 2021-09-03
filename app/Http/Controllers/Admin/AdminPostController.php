@@ -4,12 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminPostRequest;
+use App\Http\Traits\AdminImagesTraits;
 use App\Model\Post;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 
 class AdminPostController extends Controller
 {
+    use AdminImagesTraits;
+
+    private $modelCollections;
+
+    public function __construct()
+    {
+        $this->modelCollections = 'news';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +28,7 @@ class AdminPostController extends Controller
     public function index()
     {
         $paginator = Post::withTranslation()
+            ->with('media')
             ->translated('en')
             ->oldest('sort')
             ->paginate(15);
@@ -52,22 +63,14 @@ class AdminPostController extends Controller
 
         $item->save();
 
+        //загрузка картинки
+        $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
+
         if ($item) {
             return redirect()->route('admin.news.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -82,7 +85,10 @@ class AdminPostController extends Controller
 
         $item->update();
 
-        return view('admin.posts.edit', compact('item'));
+//забираем картинку с app/traits
+        $image = $this->AdminImages($item, $this->modelCollections);
+
+        return view('admin.posts.edit', compact('item','image'));
     }
 
     /**
@@ -90,21 +96,42 @@ class AdminPostController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(AdminPostRequest $request, $id)
     {
-        //
+        $item = Post::find($id);
+
+        $result = $item->update($request->all());
+
+//загрузка картинки
+        $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
+
+        if ($result) {
+            return redirect()->route('admin.news.edit', $item->id)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+        } else {
+            return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $item = Post::find($id);
+
+        $item->clearMediaCollection($this->modelCollections);
+
+        $result = Post::destroy($id);
+
+        if ($result) {
+            return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);
+        } else {
+            return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
+        }
     }
 }

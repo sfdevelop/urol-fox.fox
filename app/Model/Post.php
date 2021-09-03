@@ -5,14 +5,19 @@ namespace App\Model;
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Post extends Model implements TranslatableContract
+class Post extends Model implements TranslatableContract ,HasMedia
 {
-    use Translatable;
+    use Translatable, HasMediaTrait;
 
     public $translatedAttributes = [
         'title',
-        'description'
+        'description',
+        'seo_title',
+        'seo_key',
+        'seo_description'
     ];
     protected $fillable = [
         'id',
@@ -22,4 +27,20 @@ class Post extends Model implements TranslatableContract
         'updated_at',
     ];
 
+    public function registerMediaCollections() {
+        $this
+            ->addMediaCollection('news')
+            ->useFallbackUrl('/img/no-photo.jpg')
+            ->useFallbackPath(public_path('/img/no-photo.jpg'))
+            ->singleFile();
+
+        $this
+            ->addMediaConversion('thumb')
+            ->fit('crop', 1920, 600);
+
+        $this->addMediaConversion('thumb-p')
+            ->format('webp')
+            ->fit('crop', 1920, 600)
+            ->background('FFFFFF');
+    }
 }

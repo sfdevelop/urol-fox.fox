@@ -9,6 +9,11 @@
 
 @section('new-js')
     <script src="{{asset('administrator/assets/js/scripts/page-users.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.tooltipped').tooltip();
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -24,7 +29,10 @@
                         </div>
                         <div class="col s2 m6 l6 right">
                             <a href="{{route('admin.news.create')}}"
-                               class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right pulse">
+                               class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right pulse tooltipped"
+                               data-position="left"
+                               data-tooltip="Создать запись"
+                            >
                                 <i class="material-icons ">add</i>
                             </a>
                         </div>
@@ -37,10 +45,14 @@
                         <div class="users-list-table">
                             <div class="card">
                                 <div class="card-content">
+
+                                    @include('layouts.message.message')
+
                                     <div class="responsive-table">
                                         <table>
                                             <thead>
                                             <tr>
+                                                <th>Фото</th>
                                                 <th style="width: 50%">Название</th>
                                                 <th>Статус</th>
                                                 <th>Сортировка</th>
@@ -50,10 +62,15 @@
                                             <tbody>
                                             @forelse ( $paginator as $item)
                                                 <tr>
-                                                    <td>{{$item->translate('en', true)->title}}</td>
+                                                    <td>
+                                                        <img style="border-radius: 8px; border: 1px solid #ccc; max-width: 90px"
+                                                             class="responsive-img"
+                                                             src="{{$item->getFirstMediaUrl('news', 'thumb-p')}}"/>
+                                                    </td>
+                                                    <td>{{$item->translate('ru', true)->title}}</td>
                                                     <td>
                                                         @if ($item->public==1)
-                                                              <span class="chip green lighten-5">
+                                                            <span class="chip green lighten-5">
                                                                     <span class="green-text">Опубликовано</span>
                                                               </span>
                                                         @else
@@ -64,9 +81,27 @@
                                                     </td>
                                                     <td>{{$item->sort}}</td>
                                                     <td class="right">
-                                                        <a href="{{route('admin.news.edit', $item->id)}}">
+                                                        <a class="mb-6 btn-floating waves-effect waves-light cyan col p-0 tooltipped"
+                                                           href="{{route('admin.news.edit', $item->id)}}"
+                                                           data-position="left"
+                                                           data-tooltip="Редактирование"
+                                                        >
                                                             <i class="material-icons dp48">create</i>
                                                         </a>
+                                                        <form method="POST" action="{{route('admin.news.destroy', $item->id)}} "
+                                                              class="col"
+                                                              >
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        <button class="btn-floating mb-1 waves-effect waves-light tooltipped"
+                                                                type="submit"
+                                                                href="#"
+                                                                data-position="left"
+                                                                data-tooltip="Удалить"
+                                                        >
+                                                            <i class="material-icons">clear</i>
+                                                        </button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @empty
@@ -76,11 +111,11 @@
                                             </tbody>
                                         </table>
                                     </div>
-{{--                                    <div class="paginate">--}}
-{{--                                        @if ($paginator->total() > $paginator->count())--}}
-{{--                                            {{ $paginator->links() }}--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
+                                    <div class="paginate">
+                                        @if ($paginator->total() > $paginator->count())
+                                            {{ $paginator->links() }}
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
