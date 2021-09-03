@@ -34,6 +34,13 @@
             </a>
         </li>
 
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.slider.index')}}">
+                <i class="material-icons dp48">image</i>
+                <span class="menu-title" data-i18n="Form Layouts">Слайд-шоу</span>
+            </a>
+        </li>
+
     </ul>
 
     <div class="navigation-background"></div>

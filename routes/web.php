@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Route;
     Route::group($groupData, function () {
         Route::get('/', 'AdminController@index')->name('admin.enter');
         Route::resource('news', 'AdminPostController')->names('admin.news')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
+        Route::resource('slider', 'AdminSliderController')->names('admin.slider')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
     });
 
 

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminPostRequest extends FormRequest
+class AdminSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,18 +30,19 @@ class AdminPostRequest extends FormRequest
 
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.title'] = 'required';
-
+            $rules[$locale.'.slogan'] = 'required';
         }
-
         return $rules;
     }
 
     public function messages()
     {
-        return RuleFactory::make([
+        $vilid= RuleFactory::make([
             '%title%.required' => 'Заголовок (% %) обязателен для заполнения',
+            '%slogan%.required' => 'Слоган (% %) обязателен для заполнения',
         ]);
 
+        return $vilid;
     }
 
     public function attributes()
