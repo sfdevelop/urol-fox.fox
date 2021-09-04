@@ -41,6 +41,19 @@
             </a>
         </li>
 
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.service.index')}}">
+                <i class="material-icons dp48">perm_data_setting</i>
+                <span class="menu-title" data-i18n="Form Layouts">Услуги</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.option.edit', 2)}}">
+                <i class="material-icons dp48">settings</i>
+                <span class="menu-title" data-i18n="Form Layouts">Настройки</span>
+            </a>
+        </li>
+
     </ul>
 
     <div class="navigation-background"></div>

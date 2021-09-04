@@ -2,14 +2,14 @@
 
 namespace App\Model;
 
-use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Post extends Model implements TranslatableContract ,HasMedia
+class Service extends Model implements TranslatableContract ,HasMedia
 {
     use Translatable, HasMediaTrait, Sluggable;
 
@@ -31,16 +31,15 @@ class Post extends Model implements TranslatableContract ,HasMedia
     ];
 
     protected $fillable = [
-        'id',
+
         'public',
         'sort',
-        'created_at',
-        'updated_at',
+
     ];
 
     public function registerMediaCollections() {
         $this
-            ->addMediaCollection('news')
+            ->addMediaCollection('service')
             ->useFallbackUrl('/img/no-photo.jpg')
             ->useFallbackPath(public_path('/img/no-photo.jpg'))
             ->singleFile();
