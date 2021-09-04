@@ -17,21 +17,4 @@ class postService
 
         return $paginator;
     }
-
-    public function storePost($request){
-
-        $data = $request->all();
-        $item = new Post($data);
-        $item->save();
-
-        return $item;
-    }
-
-    public function editPost($id){
-
-        $item = Post::FindorFail($id);
-        $item->update();
-
-        return $item;
-    }
 }

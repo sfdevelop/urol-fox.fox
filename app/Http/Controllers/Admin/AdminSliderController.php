@@ -5,24 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminSliderRequest;
 use App\Http\Traits\AdminImagesTraits;
+use App\Http\Traits\CreateUpdateTraits;
 use App\Model\Slider;
 use App\Services\slider\sliderService;
 use Illuminate\Http\Request;
 
 class AdminSliderController extends Controller
 {
-    use AdminImagesTraits;
+    use AdminImagesTraits, CreateUpdateTraits;
 
     public $modelCollections;
     public $sliderService;
+    protected  $model;
 
     /**
      * @param $modelCollections
      */
-    public function __construct( sliderService $sliderService)
+    public function __construct( Slider $model ,sliderService $sliderService)
     {
         $this->modelCollections = 'slider';
         $this->sliderService=$sliderService;
+        $this->model=$model;
     }
 
     /**
@@ -57,7 +60,7 @@ class AdminSliderController extends Controller
      */
     public function store(AdminSliderRequest $request)
     {
-        $item=$this->sliderService->storeSlider($request);
+        $item=$this->createUpdate($request, $id=null);
 
         $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
 
@@ -76,7 +79,7 @@ class AdminSliderController extends Controller
      */
     public function edit($id)
     {
-        $item=$this->sliderService->editPost($id);
+        $item=$this->model->find($id);
 
         $image = $this->AdminImages($item, $this->modelCollections);
 
@@ -92,14 +95,12 @@ class AdminSliderController extends Controller
      */
     public function update(AdminSliderRequest $request, $id)
     {
-        $item = Slider::find($id);
+        $item=$this->createUpdate($request, $id);
 
-        $result = $item->update($request->all());
+        $this->MultiUpdateAdminImages($request, $this->model->find($id), $this->modelCollections);
 
-        $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
-
-        if ($result) {
-            return redirect()->route('admin.slider.edit', $item->id)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+        if ($item) {
+            return redirect()->route('admin.slider.edit', $this->model->find($id))->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
         } else {
             return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
         }
@@ -113,9 +114,9 @@ class AdminSliderController extends Controller
      */
     public function destroy($id)
     {
-        Slider::find($id)->clearMediaCollection($this->modelCollections);
+        $this->model->find($id)->clearMediaCollection($this->modelCollections);
 
-        $result = Slider::destroy($id);
+        $result = $this->model->destroy($id);
 
         if ($result) {
             return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);

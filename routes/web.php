@@ -35,5 +35,3 @@ use Illuminate\Support\Facades\Route;
         Route::resource('service', 'AdminServiceController')->names('admin.service')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('option', 'AdminOptionController')->names('admin.option')->only( 'edit', 'update');
     });
-
-
