@@ -165,6 +165,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         NetoJose\Bootstrap4Forms\Bootstrap4FormsServiceProvider::class,
+        Nestable\NestableServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => NetoJose\Bootstrap4Forms\Bootstrap4FormsFacade::class,
+        'Nestable' => Nestable\Facades\NestableService::class,
     ],
 
 ];

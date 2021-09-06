@@ -22,10 +22,7 @@
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out"
         data-menu="menu-navigation" data-collapsible="menu-accordion">
 
-        <li class="navigation-header">
-            <a class="navigation-header-text">Новости</a>
-            <i class="navigation-header-icon material-icons">Новости</i>
-        </li>
+
 
         <li class="bold">
             <a class="waves-effect waves-cyan " href="{{route('admin.news.index')}}">
@@ -51,6 +48,17 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.option.edit', 2)}}">
                 <i class="material-icons dp48">settings</i>
                 <span class="menu-title" data-i18n="Form Layouts">Настройки</span>
+            </a>
+        </li>
+
+        <li class="navigation-header">
+            <a class="navigation-header-text">Каталог</a>
+            <i class="navigation-header-icon material-icons">Каталог</i>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.category.index')}}">
+                <i class="material-icons dp48">collections</i>
+                <span class="menu-title" data-i18n="Form Layouts">Категории</span>
             </a>
         </li>
 

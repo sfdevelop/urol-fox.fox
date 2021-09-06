@@ -3,26 +3,31 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminPostRequest;
+use App\Http\Requests\AdminCategoryRequest;
 use App\Http\Traits\AdminImagesTraits;
 use App\Http\Traits\CreateUpdateTraits;
-use App\Model\Post;
-use App\Services\Post\postService;
+use App\Model\Category;
+use App\Services\Category\categoryService;
+use Illuminate\Http\Request;
 
-class AdminPostController extends Controller
+class AdminCategoryController extends Controller
 {
     use AdminImagesTraits, CreateUpdateTraits;
 
     public $modelCollections;
-    public $post;
-    protected  $model;
+    protected $model;
+    public $category;
 
-    public function __construct(Post $model,postService $postService)
+    /**
+     * @param $modelCollections
+     */
+    public function __construct(Category $model, categoryService $category)
     {
-        $this->modelCollections = 'news';
-        $this->post=$postService;
-        $this->model=$model;
+        $this->modelCollections = 'category';
+        $this->model = $model;
+        $this->category=$category;
     }
+
 
     /**
      * Display a listing of the resource.
@@ -31,9 +36,11 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $paginator = $this->post->indexPost();
+        $categories = $this->category->categoryIndex();
 
-        return view('admin.posts.index', compact('paginator'));
+        $separator = '-';
+
+        return view('admin.category.index', compact('categories', 'separator'));
     }
 
     /**
@@ -43,9 +50,13 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        $item = new Post();
+        $item = new Category();
 
-        return view('admin.posts.edit', compact('item'));
+        $categories=$this->categoryTrait();
+
+        $separator = '-';
+
+        return view('admin.category.edit', compact('item', 'categories', 'separator'));
     }
 
     /**
@@ -54,14 +65,15 @@ class AdminPostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(AdminPostRequest $request)
+    public function store(AdminCategoryRequest $request)
     {
+
         $item = $this->model->Create($request->all());
 
         $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.news.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
+            return redirect()->route('admin.category.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }
@@ -79,7 +91,11 @@ class AdminPostController extends Controller
 
         $image = $this->AdminImages($item, $this->modelCollections);
 
-        return view('admin.posts.edit', compact('item','image'));
+        $categories=$this->categoryTrait();
+
+        $separator = '-';
+
+        return view('admin.category.edit', compact('item','image', 'categories', 'separator'));
     }
 
     /**
@@ -89,14 +105,15 @@ class AdminPostController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AdminPostRequest $request, Post $news)
+    public function update(AdminCategoryRequest $request, Category $category)
     {
-        $item=$news->update($request->all());
+//        dd($request->category_id);
+        $item=$category->update($request->all());
 
-        $this->MultiUpdateAdminImages($request, $news, $this->modelCollections);
+        $this->MultiUpdateAdminImages($request, $category, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.news.edit', $news)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+            return redirect()->route('admin.category.edit', $category)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
         } else {
             return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
         }
@@ -108,11 +125,13 @@ class AdminPostController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $this->model->find($id)->clearMediaCollection($this->modelCollections);
+        $category->clearMediaCollection($this->modelCollections);
 
-        $result = $this->model->destroy($id);
+        $category->childrenCategories()->delete();
+
+        $result = $category->delete();
 
         if ($result) {
             return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);

@@ -2,6 +2,8 @@
 
 namespace App\Http\Traits;
 
+use App\Model\Category;
+
 trait CreateUpdateTraits
 {
     public function createUpdate($request, $id)
@@ -13,5 +15,15 @@ trait CreateUpdateTraits
             $item = $this->model->find($id)->update($request->all());
 
         return $item;
+    }
+
+    public function categoryTrait()
+    {
+        $categories = Category::whereNull('category_id')
+            ->with('childrenCategories')
+            ->oldest('sort')
+            ->get();
+
+        return $categories;
     }
 }

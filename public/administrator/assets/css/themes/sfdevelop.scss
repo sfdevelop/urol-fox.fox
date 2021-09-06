@@ -26,3 +26,24 @@ a.waves-light {
     background: none!important;
     color: black!important;
 }
+.category_li{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    overflow: hidden;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+    justify-content:space-between;
+}
+.row-flex-center{
+    display: flex;
+    justify-content: end;
+}
+.row-flex-center img{
+    max-width: 150px;
+}
+.category_ul ul{
+
+}
+
