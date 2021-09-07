@@ -61,6 +61,12 @@
                 <span class="menu-title" data-i18n="Form Layouts">Категории</span>
             </a>
         </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.product.index')}}">
+                <i class="material-icons dp48">beach_access</i>
+                <span class="menu-title" data-i18n="Form Layouts">Продукция</span>
+            </a>
+        </li>
 
     </ul>
 

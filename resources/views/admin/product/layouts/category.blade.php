@@ -5,9 +5,9 @@
         @error("category_id")
             is-invalid
         @enderror
-"
+            "
     >
-        <option selected value="">Родительская категория</option>
+        <option selected disabled value="">Выберите категорию</option>
         @foreach ($categories as $category)
 
             <option

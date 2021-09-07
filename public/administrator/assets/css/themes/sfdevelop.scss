@@ -6,11 +6,11 @@ a.waves-light {
     color: white !important;
 }
 
-.is-invalid {
+.is-invalid, .invalid-feedback {
     border-color: red !important;
 }
 
-.alert-danger {
+.alert-danger, .invalid-feedback {
     font-size: 85%;
     color: red;
 }
@@ -45,5 +45,8 @@ a.waves-light {
 }
 .category_ul ul{
 
+}
+.p-0{
+    padding: 0!important;
 }
 

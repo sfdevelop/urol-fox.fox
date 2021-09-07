@@ -3,31 +3,32 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminCategoryRequest;
+use App\Http\Requests\AdminPostRequest;
+use App\Http\Requests\AdminProductRequest;
 use App\Http\Traits\AdminImagesTraits;
 use App\Http\Traits\CreateUpdateTraits;
 use App\Model\Category;
-use App\Services\Category\categoryService;
+use App\Model\Product;
+use App\Services\Product\productService;
 use Illuminate\Http\Request;
 
-class AdminCategoryController extends Controller
+class AdminProductController extends Controller
 {
-    use AdminImagesTraits, CreateUpdateTraits;
-
+    public $model;
     public $modelCollections;
-    protected $model;
-    public $category;
+    public $product;
 
     /**
-     * @param $modelCollections
+     * @param $model
      */
-    public function __construct(Category $model, categoryService $category)
+    public function __construct(Product $model, productService $product)
     {
-        $this->modelCollections = 'category';
         $this->model = $model;
-        $this->category=$category;
+        $this->modelCollections = 'product';
+        $this->product=$product;
     }
 
+    use AdminImagesTraits, CreateUpdateTraits;
 
     /**
      * Display a listing of the resource.
@@ -36,11 +37,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->categoryIndex();
+        $paginator=$this->product->indexProduct();
 
-        $separator = '-';
-
-        return view('admin.category.index', compact('categories', 'separator'));
+        return view('admin.product.index', compact('paginator'));
     }
 
     /**
@@ -50,30 +49,29 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        $item = new Category();
+        $item = new Product();
 
         $categories=$this->categoryTrait();
 
         $separator = '-';
 
-        return view('admin.category.edit', compact('item', 'categories', 'separator'));
+        return view('admin.product.edit', compact('item', 'categories', 'separator'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(AdminCategoryRequest $request)
+    public function store(AdminProductRequest $request)
     {
-
         $item = $this->model->Create($request->all());
 
         $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.category.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
+            return redirect()->route('admin.product.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }
@@ -82,12 +80,12 @@ class AdminCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $item=$this->model->find($id);
+        $item=$this->model->with('media')->withTranslation()->find($id);
 
         $image = $this->AdminImages($item, $this->modelCollections);
 
@@ -95,25 +93,24 @@ class AdminCategoryController extends Controller
 
         $separator = '-';
 
-        return view('admin.category.edit', compact('item','image', 'categories', 'separator'));
+        return view('admin.product.edit', compact('item','image', 'categories', 'separator'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AdminCategoryRequest $request, Category $category)
+    public function update(AdminProductRequest $request, Product $product)
     {
+        $item=$product->update($request->all());
 
-        $item=$category->update($request->all());
-
-        $this->MultiUpdateAdminImages($request, $category, $this->modelCollections);
+        $this->MultiUpdateAdminImages($request, $product, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.category.edit', $category)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+            return redirect()->route('admin.product.edit', $product)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
         } else {
             return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
         }
@@ -122,16 +119,14 @@ class AdminCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
-        $category->clearMediaCollection($this->modelCollections);
+        $product->clearMediaCollection($this->modelCollections);
 
-        $category->childrenCategories()->delete();
-
-        $result = $category->delete();
+        $result = $product->delete();
 
         if ($result) {
             return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);

@@ -55,6 +55,7 @@
                                                 {{ $category->title }}
 
                                                 <div class="right">
+
                                                     <img style="border-radius: 8px; border: 1px solid #ccc; max-width: 40px"
                                                          class="responsive-img"
                                                          src="{{$category->getFirstMediaUrl('category', 'thumb-p')}}"/>
@@ -80,7 +81,6 @@
                                                             <i class="material-icons">clear</i>
                                                         </button>
                                                     </form>
-
                                                 </div>
 
                                             </li>
