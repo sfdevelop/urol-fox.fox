@@ -1,6 +1,6 @@
 @extends('layouts.admin_layouts')
 
-@section('title', 'Товары' )
+@section('title', 'Характеристики' )
 
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/page-users.min.css')}}">
@@ -25,10 +25,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s10 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Товары</span></h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Характеристики</span></h5>
                         </div>
                         <div class="col s2 m6 l6 right">
-                            <a href="{{route('admin.product.create')}}"
+                            <a href="{{route('admin.character.create')}}"
                                class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right pulse tooltipped"
                                data-position="left"
                                data-tooltip="Создать запись"
@@ -52,10 +52,7 @@
                                         <table>
                                             <thead>
                                             <tr>
-                                                <th>Фото</th>
                                                 <th style="width: 50%">Название</th>
-                                                <th>Категория</th>
-                                                <th>Статус</th>
                                                 <th>Сортировка</th>
                                                 <th class="right">Управление</th>
                                             </tr>
@@ -63,28 +60,18 @@
                                             <tbody>
                                             @forelse ( $paginator as $item)
                                                 <tr>
-                                                    <td>
-                                                        <img style=" max-width: 90px"
-                                                             class="circle mr-10 vertical-text-middle"
-                                                             src="{{$item->getFirstMediaUrl('product', 'thumb-p')}}"/>
-                                                    </td>
-                                                    <td>{{$item->translate('ru', true)->title}}</td>
-                                                    <td>{{$item->category->translate('ru', true)->title}}</td>
-                                                    <td>
-                                                        @if ($item->public==1)
-                                                            <span class="chip green lighten-5">
-                                                                    <span class="green-text">Опубликовано</span>
-                                                              </span>
-                                                        @else
-                                                            <span class="chip red lighten-5">
-                                                                <span class="red-text">Не опубликовано</span>
-                                                            </span>
-                                                        @endif
-                                                    </td>
+                                                    <td>{{$item->title}}</td>
                                                     <td>{{$item->sort}}</td>
-                                                    <td class="">
-                                                        <form method="POST" action="{{route('admin.product.destroy', $item->id)}} "
-                                                              class="col right"
+                                                    <td class="right">
+                                                        <a class="mb-6 btn-floating waves-effect waves-light cyan col p-0 tooltipped"
+                                                           href="{{route('admin.character.edit', $item->id)}}"
+                                                           data-position="left"
+                                                           data-tooltip="Редактирование"
+                                                        >
+                                                            <i class="material-icons dp48">create</i>
+                                                        </a>
+                                                        <form method="POST" action="{{route('admin.character.destroy', $item->id)}} "
+                                                              class="col"
                                                         >
                                                             @csrf
                                                             @method('DELETE')
@@ -97,14 +84,6 @@
                                                                 <i class="material-icons">clear</i>
                                                             </button>
                                                         </form>
-                                                        <a class="mb-6 btn-floating waves-effect waves-light cyan col p-0 tooltipped right"
-                                                           href="{{route('admin.product.edit', $item->id)}}"
-                                                           data-position="left"
-                                                           data-tooltip="Редактирование"
-                                                        >
-                                                            <i class="material-icons dp48">create</i>
-                                                        </a>
-
                                                     </td>
                                                 </tr>
                                             @empty

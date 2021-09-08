@@ -2,33 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminPostRequest;
-use App\Http\Requests\AdminProductRequest;
-use App\Http\Traits\AdminImagesTraits;
-use App\Http\Traits\CreateUpdateTraits;
-use App\Model\Category;
-use App\Model\Product;
-use App\Services\Product\productService;
+use App\Http\Requests\AdminCharacteristicRequest;
+use App\Model\Characteristic;
+use App\Services\Characteristics\characteristicsService;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class AdminProductController extends Controller
+class AdminCharacteristicController extends Controller
 {
+
     public $model;
-    public $modelCollections;
-    public $product;
+    public $character;
 
     /**
      * @param $model
      */
-    public function __construct(Product $model, productService $product)
+    public function __construct(Characteristic $model, characteristicsService $character)
     {
         $this->model = $model;
-        $this->modelCollections = 'product';
-        $this->product=$product;
+        $this->character=$character;
     }
 
-    use AdminImagesTraits, CreateUpdateTraits;
 
     /**
      * Display a listing of the resource.
@@ -37,9 +31,9 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        $paginator=$this->product->indexProduct();
+        $paginator=$this->character->indexCharacteristic();
 
-        return view('admin.product.index', compact('paginator'));
+        return view('admin.characteristic.index', compact('paginator'));
     }
 
     /**
@@ -49,13 +43,9 @@ class AdminProductController extends Controller
      */
     public function create()
     {
-        $item = new Product();
+        $item = new Characteristic();
 
-        $categories=$this->categoryTrait();
-
-        $separator = '-';
-
-        return view('admin.product.edit', compact('item', 'categories', 'separator'));
+        return view('admin.characteristic.edit', compact('item'));
     }
 
     /**
@@ -64,14 +54,12 @@ class AdminProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(AdminProductRequest $request)
+    public function store(AdminCharacteristicRequest $request)
     {
         $item = $this->model->Create($request->all());
 
-        $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
-
         if ($item) {
-            return redirect()->route('admin.product.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
+            return redirect()->route('admin.character.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }
@@ -80,39 +68,28 @@ class AdminProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Model\Characteristic  $characteristic
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Characteristic $characteristic)
     {
-        $item=$this->model->with('media')->withTranslation()->find($id);
-
-        $image = $this->AdminImages($item, $this->modelCollections);
-
-        $categories=$this->categoryTrait();
-
-        $separator = '-';
-
-        return view('admin.product.edit', compact('item','image', 'categories', 'separator'));
+        $item=$characteristic;
+        return view('admin.characteristic.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Model\Characteristic  $characteristic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AdminProductRequest $request, Product $product)
+    public function update(Request $request, Characteristic $characteristic)
     {
-        $this->product->deleteImage($request);
-
-        $item=$product->update($request->all());
-
-        $this->MultiUpdateAdminImages($request, $product, $this->modelCollections);
+        $item=$characteristic->update($request->all());
 
         if ($item) {
-            return redirect()->route('admin.product.edit', $product)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+            return redirect()->route('admin.character.edit', $characteristic)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
         } else {
             return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
         }
@@ -121,14 +98,12 @@ class AdminProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Model\Characteristic  $characteristic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Product $product)
+    public function destroy(Characteristic $characteristic)
     {
-        $product->clearMediaCollection($this->modelCollections);
-
-        $result = $product->delete();
+        $result = $characteristic->delete();
 
         if ($result) {
             return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);

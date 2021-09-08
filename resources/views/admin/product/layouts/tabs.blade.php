@@ -90,7 +90,8 @@
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate"
-                               type="text">
+                               type="text"
+                        >
                     </div>
                     @error("file")
                     <div

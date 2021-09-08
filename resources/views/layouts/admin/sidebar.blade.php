@@ -62,7 +62,13 @@
             </a>
         </li>
         <li class="bold">
-            <a class="waves-effect waves-cyan " href="{{route('admin.product.index')}}">
+            <a class="waves-effect waves-cyan " href="{{route('admin.character.index')}}">
+                <i class="material-icons dp48">settings_applications</i>
+                <span class="menu-title" data-i18n="Form Layouts">Характеристики</span>
+            </a>
+        </li>
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.category.index')}}">
                 <i class="material-icons dp48">beach_access</i>
                 <span class="menu-title" data-i18n="Form Layouts">Продукция</span>
             </a>

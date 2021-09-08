@@ -11,6 +11,7 @@ class categoryService
         $categories = Category::whereNull('category_id')
             ->with('categories')
             ->with('media')
+            ->withTranslation()
             ->paginate(8);
 
         //        $categories = Category::getCategories();
@@ -24,6 +25,7 @@ class categoryService
             ->with('childrenCategories')
             ->oldest('sort')
             ->with('media')
+            ->withTranslation()
             ->get();
 
         return $categories;

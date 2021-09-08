@@ -54,12 +54,12 @@ class Category extends Model implements TranslatableContract ,HasMedia
 
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class)->withTranslation();
     }
 
     public function childrenCategories()
     {
-        return $this->hasMany(Category::class)->with('categories');
+        return $this->hasMany(Category::class)->with('categories')->withTranslation();
     }
 
 //    public static function getCategories() {

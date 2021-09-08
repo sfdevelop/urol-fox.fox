@@ -12,8 +12,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function deleteImg(Request $request)
     {
-        return view('layouts.admin_layouts');
+        dd($request);
     }
 }

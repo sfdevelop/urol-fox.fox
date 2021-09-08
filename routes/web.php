@@ -36,4 +36,5 @@ use Illuminate\Support\Facades\Route;
         Route::resource('category', 'AdminCategoryController')->names('admin.category')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('option', 'AdminOptionController')->names('admin.option')->only( 'edit', 'update');
         Route::resource('product', 'AdminProductController')->names('admin.product')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
+        Route::resource('characteristics', 'AdminCharacteristicController')->names('admin.character')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
     });
