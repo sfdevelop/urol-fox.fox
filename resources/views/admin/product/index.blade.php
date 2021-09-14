@@ -5,14 +5,22 @@
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/page-users.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/form-select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/select2/select2-materialize.css')}}">
 @endsection
 
 @section('new-js')
     <script src="{{asset('administrator/assets/js/scripts/page-users.min.js')}}"></script>
+    <script src="{{asset('administrator/assets/vendors/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('administrator/assets/js/scripts/form-select2.min.js')}}"></script>
     <script>
         $(document).ready(function(){
             $('.tooltipped').tooltip();
         });
+
+        $('.public').val(["{{request()->status}}"]).select2()
+        $('.category').val(["{{request()->category}}"]).select2()
     </script>
 @endsection
 
@@ -40,9 +48,15 @@
                 </div>
             </div>
             <div class="col s12">
+                @include('layouts.filter.productFilter')
                 <div class="container">
+
                     <section class="users-list-wrapper section">
+
                         <div class="users-list-table">
+
+
+
                             <div class="card">
                                 <div class="card-content">
 
@@ -121,9 +135,7 @@
                                         </table>
                                     </div>
                                     <div class="paginate">
-                                        @if ($paginator->total() > $paginator->count())
-                                            {{ $paginator->links() }}
-                                        @endif
+                                            {{ $paginator->appends($_GET)->links() }}
                                     </div>
                                 </div>
                             </div>

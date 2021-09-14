@@ -34,4 +34,12 @@ trait CreateUpdateTraits
 
         return $allCharacteristic;
     }
+
+    public function allCategory()
+    {
+        $categories = Category::withTranslation()
+            ->get();
+
+        return $categories;
+    }
 }

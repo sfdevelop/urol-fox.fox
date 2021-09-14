@@ -35,11 +35,13 @@ class AdminProductController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $paginator = $this->product->indexProduct();
+        $paginator = $this->product->indexProduct($request);
 
-        return view('admin.product.index', compact('paginator'));
+        $categories = $this->allCategory();
+
+        return view('admin.product.index', compact('paginator', 'categories'));
     }
 
     /**

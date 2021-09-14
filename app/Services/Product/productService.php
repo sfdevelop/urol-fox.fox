@@ -2,15 +2,26 @@
 
 namespace App\Services\Product;
 
+use App\Http\Filters\ProductFilter;
 use App\Model\CharacteristicProduct;
 use App\Model\Product;
 use Spatie\MediaLibrary\Models\Media;
 
 class productService
 {
-    public function indexProduct()
+    public function indexProduct($request)
     {
-        $paginator = Product::with('media')
+//        $paginator = Product::with('media')
+//            ->withTranslation()
+//            ->with('category')
+//            ->latest('sort')
+//            ->paginate(15);
+
+        $data = $request->all();
+
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $paginator = Product::Filter($filter)
+            ->with('media')
             ->withTranslation()
             ->with('category')
             ->latest('sort')
@@ -41,14 +52,13 @@ class productService
 
     public function show_characteristics($id)
     {
-        $character=CharacteristicProduct::with('characteristic')
+        $character = CharacteristicProduct::with('characteristic')
             ->withTranslation()
             ->where('product_id', $id)
             ->get()
-            ->sortBy(function($CharacteristicsSort) {
+            ->sortBy(function ($CharacteristicsSort) {
                 return $CharacteristicsSort->characteristic->sort;
-            });
-        ;
+            });;
 
         return $character;
     }
