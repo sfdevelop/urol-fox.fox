@@ -18,7 +18,9 @@
         "netojose/laravel-bootstrap-4-forms": "^3.0",
         "spatie/laravel-medialibrary": "7.*",
         "spatie/laravel-permission": "^4.4",
-        "webreinvent/laravel-nestable": "^0.0.3"
+        "webreinvent/laravel-nestable": "^0.0.3",
+        "yajra/laravel-datatables-oracle": "^9.18",
+        "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

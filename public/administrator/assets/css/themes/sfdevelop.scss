@@ -18,15 +18,18 @@ a.waves-light {
 .card .card-content p {
     font-size: 15px !important;
 }
-.paginate nav{
-    background: none!important;
-    box-shadow: none!important;
+
+.paginate nav {
+    background: none !important;
+    box-shadow: none !important;
 }
-.paginate .page-footer, .pagination li.active{
-    background: none!important;
-    color: black!important;
+
+.paginate .page-footer, .pagination li.active {
+    background: none !important;
+    color: black !important;
 }
-.category_li{
+
+.category_li {
     border-bottom: 1px solid #ccc;
     display: flex;
     overflow: hidden;
@@ -34,19 +37,32 @@ a.waves-light {
     padding-top: 10px;
     padding-bottom: 10px;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 }
-.row-flex-center{
+
+.row-flex-center {
     display: flex;
     justify-content: end;
 }
-.row-flex-center img{
+
+.row-flex-center img {
     max-width: 150px;
 }
-.category_ul ul{
 
-}
-.p-0{
-    padding: 0!important;
+#table_character_length, .sorting{
+display: none;
 }
 
+.p-0 {
+    padding: 0 !important;
+}
+
+table.dataTable.no-footer, table.dataTable thead th, table.dataTable thead td {
+    border: none !important;
+}
+.table_character td{
+    width: 50%;
+}
+.odd td{
+    min-width: 250px!important;
+}

@@ -2,6 +2,7 @@
 
 namespace App\Services\Product;
 
+use App\Model\CharacteristicProduct;
 use App\Model\Product;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -25,5 +26,30 @@ class productService
                 Media::findOrFail($id)->delete();
             }
         }
+
+        $this->deleteCharacter($request);
+    }
+
+    public function deleteCharacter($request)
+    {
+        if ($request->has('characterDelete')) {
+            foreach ($request->characterDelete as $id) {
+                CharacteristicProduct::findOrFail($id)->delete();
+            }
+        }
+    }
+
+    public function show_characteristics($id)
+    {
+        $character=CharacteristicProduct::with('characteristic')
+            ->withTranslation()
+            ->where('product_id', $id)
+            ->get()
+            ->sortBy(function($CharacteristicsSort) {
+                return $CharacteristicsSort->characteristic->sort;
+            });
+        ;
+
+        return $character;
     }
 }

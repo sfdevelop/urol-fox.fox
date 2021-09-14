@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
     ];
 
     Route::group($groupData, function () {
+
         Route::get('/', 'AdminController@index')->name('admin.enter');
         Route::resource('news', 'AdminPostController')->names('admin.news')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('slider', 'AdminSliderController')->names('admin.slider')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
@@ -37,4 +38,8 @@ use Illuminate\Support\Facades\Route;
         Route::resource('option', 'AdminOptionController')->names('admin.option')->only( 'edit', 'update');
         Route::resource('product', 'AdminProductController')->names('admin.product')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('characteristics', 'AdminCharacteristicController')->names('admin.character')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
+        Route::resource('product-character', 'AdminProductCharacteristic')->names('admin.product-character')->only('edit', 'store', 'update');
+
+        Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
+
     });

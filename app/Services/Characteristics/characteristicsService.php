@@ -8,7 +8,8 @@ class characteristicsService
 {
     public function indexCharacteristic()
     {
-       $paginator= Characteristic::paginate(15);
+       $paginator= Characteristic::OrderBy('sort')
+           ->paginate(15);
 
         return $paginator;
     }

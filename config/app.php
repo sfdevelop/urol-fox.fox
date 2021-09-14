@@ -166,6 +166,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         NetoJose\Bootstrap4Forms\Bootstrap4FormsServiceProvider::class,
         Nestable\NestableServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -233,6 +235,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => NetoJose\Bootstrap4Forms\Bootstrap4FormsFacade::class,
         'Nestable' => Nestable\Facades\NestableService::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

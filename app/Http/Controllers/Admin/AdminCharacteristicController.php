@@ -84,7 +84,7 @@ class AdminCharacteristicController extends Controller
      * @param  \App\Model\Characteristic  $characteristic
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Characteristic $characteristic)
+    public function update(AdminCharacteristicRequest $request, Characteristic $characteristic)
     {
         $item=$characteristic->update($request->all());
 

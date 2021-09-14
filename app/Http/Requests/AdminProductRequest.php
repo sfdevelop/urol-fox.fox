@@ -26,15 +26,14 @@ class AdminProductRequest extends FormRequest
     {
         $rules = [
             'file' => 'mimes:jpeg,bmp,png,JPG,JPEG,webp',
-            'price' => 'required|numeric|between:0,99',
-            'price_sale' => 'nullable|numeric|between:0,99',
+            'price' => 'required|numeric',
+            'price_sale' => 'nullable|numeric',
             'category_id' => 'required',
             'sort' => 'required|integer',
         ];
 
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.title'] = 'required';
-
         }
 
         return $rules;

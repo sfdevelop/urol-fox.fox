@@ -8,18 +8,43 @@
 
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{asset('administrator/assets/css/pages/app-invoice.min.css')}}">
+    @toastr_css
 @endsection
 
 @section('new-js')
     <script src="{{asset('administrator/assets/js/scripts/form-elements.min.js')}}"></script>
     <script src="{{asset('administrator/assets/js/scripts/ui-alerts.min.js')}}"></script>
     <script src="{{ asset('vendor/japonline/laravel-ckeditor/ckeditor.js') }}"></script>
+    <script src="{{asset('administrator/assets/vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('administrator/assets/js/ajax/dataTablesCustom.js')}}"></script>
+    <script src="{{asset('administrator/assets/js/scripts/advance-ui-modals.min.js')}}"></script>
+
+    <script src="{{asset('administrator/assets/js/ajax/repeater.js')}}"></script>
+
+    @toastr_js
+    @toastr_render
 
     <script type="text/javascript">
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+            /* Create Repeater */
+            $("#repeater").createRepeater({
+            showFirstItemToDefault: true,
+        });
+
+
         $(document).ready(function () {
             $('.ckeditor').ckeditor();
         });
     </script>
+
 @endsection
 
 @section('content')
@@ -77,6 +102,12 @@
                                                                    href="#seo">Медиа</a>
                                                             </li>
                                                         @endif
+                                                        @if ($item->exists)
+                                                            <li class="tab m4">
+                                                                <a class="white-text waves-effect waves-light active"
+                                                                   href="#specification">Характеристики товара</a>
+                                                            </li>
+                                                        @endif
                                                     </ul>
                                                 </div>
                                                 <div class="col s12">
@@ -91,6 +122,13 @@
                                                          style="display: block;">
                                                         @include('admin.product.layouts.image')
                                                     </div>
+                                                    @if ($item->exists)
+                                                        <div id="specification"
+                                                             class="col s12  lighten-4 active"
+                                                             style="display: block;">
+                                                            @include('admin.product.layouts.characteristic.characteristic')
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div class="card">
                                                     <div class="col s12 m12 l12">

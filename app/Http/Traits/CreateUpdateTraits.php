@@ -3,6 +3,7 @@
 namespace App\Http\Traits;
 
 use App\Model\Category;
+use App\Model\Characteristic;
 
 trait CreateUpdateTraits
 {
@@ -25,5 +26,12 @@ trait CreateUpdateTraits
             ->get();
 
         return $categories;
+    }
+
+    public function allCharacteristic()
+    {
+        $allCharacteristic = Characteristic::all();
+
+        return $allCharacteristic;
     }
 }
