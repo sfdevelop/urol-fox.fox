@@ -58,7 +58,7 @@ class productService
             ->get()
             ->sortBy(function ($CharacteristicsSort) {
                 return $CharacteristicsSort->characteristic->sort;
-            });;
+            });
 
         return $character;
     }

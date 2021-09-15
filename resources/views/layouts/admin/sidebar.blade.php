@@ -22,8 +22,6 @@
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out"
         data-menu="menu-navigation" data-collapsible="menu-accordion">
 
-
-
         <li class="bold">
             <a class="waves-effect waves-cyan " href="{{route('admin.news.index')}}">
                 <i class="material-icons">receipt</i>
@@ -71,6 +69,13 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.product.index')}}">
                 <i class="material-icons dp48">beach_access</i>
                 <span class="menu-title" data-i18n="Form Layouts">Продукция</span>
+            </a>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.contacts.edit', 1)}}">
+                <i class="material-icons dp48">contacts</i>
+                <span class="menu-title" data-i18n="Form Layouts">Контакты</span>
             </a>
         </li>
 

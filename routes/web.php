@@ -14,12 +14,13 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Route::redirect('/', '/ru');
-//
-//Route::group(['prefix' => '{language}'], function () {
-//    Auth::routes();
-//    Route::get('/', 'HomeController@index')->name('main');
-//});
+Route::redirect('/', '/ru');
+Route::redirect('/admin', '/ru/login');
+
+Route::group(['prefix' => '{language}'], function () {
+    Auth::routes();
+    Route::get('/', 'HomeController@index')->name('main');
+});
 
 //admin panel
     $groupData = [
@@ -39,6 +40,7 @@ use Illuminate\Support\Facades\Route;
         Route::resource('product', 'AdminProductController')->names('admin.product')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('characteristics', 'AdminCharacteristicController')->names('admin.character')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('product-character', 'AdminProductCharacteristic')->names('admin.product-character')->only('edit', 'store', 'update');
+        Route::resource('contacts', 'AdminContactController')->names('admin.contacts')->only('edit', 'update');
 
         Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
 
