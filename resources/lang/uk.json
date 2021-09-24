@@ -705,5 +705,13 @@
     "Zambia": "Замбія",
     "Zimbabwe": "Зімбабве",
     "Zip \/ Postal Code": "Zip \/ Postal Code",
-    "Åland Islands": "Åland Islands"
+    "Åland Islands": "Åland Islands",
+
+    "menu_main":"Головна",
+    "menu_product":"Товари",
+    "menu_service":"Послуги",
+    "menu_pay":"Доставка і оплата",
+    "menu_contacts":"Контакти",
+    "call_order":"Замовити дзвінок",
+    "menu_news":"Новини"
 }
