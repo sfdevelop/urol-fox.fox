@@ -52,13 +52,13 @@ class Product extends Model implements TranslatableContract ,HasMedia
             ->addMediaConversion('thumb')
             ->watermark(public_path('/img/watermark.png'))
             ->watermarkPosition(Manipulations::POSITION_CENTER)
-            ->fit('crop', 600, 600);
+            ->fit('crop', 800, 600);
 
         $this->addMediaConversion('thumb-p')
             ->format('webp')
             ->watermark(public_path('/img/watermark.png'))
             ->watermarkPosition(Manipulations::POSITION_CENTER)
-            ->fit('crop', 600, 600)
+            ->fit('crop', 800, 600)
             ->background('FFFFFF');
     }
 

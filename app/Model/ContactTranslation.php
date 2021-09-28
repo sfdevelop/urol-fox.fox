@@ -13,5 +13,7 @@ class ContactTranslation extends Model
         'seo_title',
         'seo_key',
         'seo_description',
+        'weekend',
+        'time',
     ];
 }

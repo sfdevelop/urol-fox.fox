@@ -30,7 +30,6 @@ class AdminSliderRequest extends FormRequest
 
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.title'] = 'required';
-            $rules[$locale.'.slogan'] = 'required';
         }
         return $rules;
     }

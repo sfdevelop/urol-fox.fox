@@ -34,4 +34,14 @@ class serviceService
 
         return $item;
     }
+
+    public function itemService($slug)
+    {
+        $item=Service::withTranslation()
+            ->with('media')
+            ->where('slug', $slug)
+            ->first();
+
+        return $item;
+    }
 }

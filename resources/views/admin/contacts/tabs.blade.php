@@ -31,10 +31,55 @@
                             >
                             <label
                                 for="address_{{ $locale }}">
-                                Заголовок
+                                Адрес
                                 ({{ strtoupper($locale) }})
                             </label>
                             @error($locale.".address")
+                            <div
+                                class="alert alert-danger">{{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div class="input-field col s12">
+                            <input type="text"
+                                   name="{{$locale}}[time]"
+                                   id="time_{{ $locale }}"
+                                   value="{{old($locale.'.time', $item->translate($locale)->time ?? '')}}"
+                                   class="
+                                    @error($locale.".time")
+                                       is-invalid
+                                    @enderror
+                                       "
+                            >
+                            <label
+                                for="time_{{ $locale }}">
+                                Расписание работы
+                                ({{ strtoupper($locale) }})
+                            </label>
+                            @error($locale.".time")
+                            <div
+                                class="alert alert-danger">{{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="text"
+                                   name="{{$locale}}[weekend]"
+                                   id="address_{{ $locale }}"
+                                   value="{{old($locale.'.weekend', $item->translate($locale)->weekend ?? '')}}"
+                                   class="
+                                    @error($locale.".weekend")
+                                       is-invalid
+                                    @enderror
+                                       "
+                            >
+                            <label
+                                for="weekend_{{ $locale }}">
+                                Выходные
+                                ({{ strtoupper($locale) }})
+                            </label>
+                            @error($locale.".weekend")
                             <div
                                 class="alert alert-danger">{{ $message }}
                             </div>

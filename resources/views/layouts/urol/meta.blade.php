@@ -10,5 +10,7 @@
 <meta name="format-detection" content="telephone=no">
 
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+@section('css_blade')
+@show
 
 <title>Urol</title>

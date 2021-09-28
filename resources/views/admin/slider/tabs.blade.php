@@ -41,30 +41,30 @@
                             @enderror
                         </div>
 
-                        <div class="input-field col s12">
-                            <input type="text"
-                                   name="{{$locale}}[slogan]"
-                                   id="slogan_{{ $locale }}"
-                                   value="{{old($locale.'.slogan', $item->translate($locale)->slogan ?? '')}}"
-                                   class="
-                                    @error($locale.".slogan")
-                                       is-invalid
-                                    @enderror
-                                       "
-                            >
-                            <label
-                                for="title_{{ $locale }}">
-                                Слоган
-                                ({{ strtoupper($locale) }})
-                            </label>
-                            @error($locale.".slogan")
-                            <div
-                                class="alert alert-danger">{{ $message }}
-                            </div>
-                            @enderror
-                        </div>
+{{--                        <div class="input-field col s12">--}}
+{{--                            <input type="text"--}}
+{{--                                   name="{{$locale}}[slogan]"--}}
+{{--                                   id="slogan_{{ $locale }}"--}}
+{{--                                   value="{{old($locale.'.slogan', $item->translate($locale)->slogan ?? '')}}"--}}
+{{--                                   class="--}}
+{{--                                    @error($locale.".slogan")--}}
+{{--                                       is-invalid--}}
+{{--                                    @enderror--}}
+{{--                                       "--}}
+{{--                            >--}}
+{{--                            <label--}}
+{{--                                for="title_{{ $locale }}">--}}
+{{--                                Слоган--}}
+{{--                                ({{ strtoupper($locale) }})--}}
+{{--                            </label>--}}
+{{--                            @error($locale.".slogan")--}}
+{{--                            <div--}}
+{{--                                class="alert alert-danger">{{ $message }}--}}
+{{--                            </div>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
 
-                        @include('layouts.admin.seo')
+{{--                        @include('layouts.admin.seo')--}}
 
                     </div>
 

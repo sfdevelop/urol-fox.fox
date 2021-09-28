@@ -33,11 +33,10 @@ class Slider extends Model implements TranslatableContract ,HasMedia
 
         $this
             ->addMediaConversion('thumb')
-            ->fit('crop', 1920, 600);
+            ->fit('crop', 800, 800);
 
         $this->addMediaConversion('thumb-p')
             ->format('webp')
-            ->fit('crop', 1920, 600)
-            ->background('FFFFFF');
+            ->fit('crop', 800, 800);
     }
 }

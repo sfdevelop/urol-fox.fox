@@ -137,6 +137,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/webreinvent/laravel-nestable" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-oracle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yoeunes/toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/arrilot/laravel-widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mcamara/laravel-localization" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

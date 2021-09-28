@@ -9028,6 +9028,26 @@ footer ul {
     color: #FF7C27;
 }
 
+.pagination .page-item.active {
+    color: #FF7C27;
+}
+
+.page-item.active .page-link {
+    color: #FF7C27;
+    background: none;
+}
+
+.lang a {
+    border-right: 1px solid #777;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.lang a:last-child {
+    border: none;
+    padding-right: 0;
+}
+
 .items h3 {
     font-family: "Facon";
     font-weight: normal;

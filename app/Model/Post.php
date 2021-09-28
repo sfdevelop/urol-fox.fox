@@ -53,5 +53,14 @@ class Post extends Model implements TranslatableContract ,HasMedia
             ->format('webp')
             ->fit('crop', 1920, 600)
             ->background('FFFFFF');
+
+        $this
+            ->addMediaConversion('thumb-min')
+            ->fit('crop', 600, 450);
+
+        $this
+            ->addMediaConversion('thumb-min-p')
+            ->format('webp')
+            ->fit('crop', 600, 450);
     }
 }

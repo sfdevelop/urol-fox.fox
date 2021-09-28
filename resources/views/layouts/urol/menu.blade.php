@@ -74,12 +74,24 @@
                         <input class="px-2" type="text" name="search" id="">
                     </div>
                     <div class="lang d-flex align-items-center ml-3">
-                        <a href="" class="ml-2 active">RU</a>
-                        <span class="mx-2">|</span>
-                        <a href="" class="">UK</a>
+                        @foreach(config('translatable.locales') as $locale)
+                            <a href="{{ route(Route::currentRouteName(), $locale) }} " class="">{{strtoupper($locale)}}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </nav>
     </div>
 </section>
+
+<style>
+    .lang a{
+        border-right: 2px solid #777;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+    .lang a:last-child{
+        border: none;
+        padding-right: 0;
+    }
+</style>

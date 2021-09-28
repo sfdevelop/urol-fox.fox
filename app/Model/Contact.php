@@ -11,6 +11,8 @@ class Contact extends Model
 
     public $translatedAttributes = [
         'address',
+        'weekend',
+        'time',
         'seo_title',
         'seo_key',
         'seo_description'

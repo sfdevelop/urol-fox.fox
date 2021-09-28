@@ -11,15 +11,27 @@
 |
 */
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+//use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Route;
+
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::redirect('/', '/ru');
 Route::redirect('/admin', '/ru/login');
 
-Route::group(['prefix' => '{language}'], function () {
-    Auth::routes();
-    Route::get('/', 'HomeController@index')->name('main');
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect' , 'localizationRedirect' , 'localeViewPath' ]
+], function()
+{
+
+    Auth::routes(['register' => false]);
+    Route::get('/', 'urolController@index')->name('main');
+    Route::get('contacts', 'urolController@contacts')->name('contacts');
+    Route::get('news', 'urolController@news')->name('news');
+    Route::get('news/{slug?}', 'urolController@item')->name('item');
+    Route::get('service/{slug?}', 'urolController@service')->name('service');
+
 });
 
 //admin panel
