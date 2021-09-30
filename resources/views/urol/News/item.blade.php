@@ -55,7 +55,6 @@
                             <a href="{{route('item', $lastNews->slug)  }}" class="d-block">{{__('more_news')}}</a>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>

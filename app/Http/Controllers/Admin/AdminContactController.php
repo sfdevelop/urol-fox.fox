@@ -32,7 +32,7 @@ class AdminContactController extends Controller
      */
     public function update(AdminContactsRequest $request, Contact $contact)
     {
-//        dd($request->all());
+//        dd($contact);
         $item=$contact->update($request->all());
 
         if ($item) {

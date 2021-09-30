@@ -53,7 +53,7 @@
                 </ul>
             </div>
             <div class="call-order">
-                <a href="" class="btn">Замовити дзвінок</a>
+                <a href="" class="btn">{{__('call_order')}}</a>
             </div>
         </div>
     </div>

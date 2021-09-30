@@ -39,6 +39,7 @@ class Product extends Model implements TranslatableContract ,HasMedia
         'price_sale',
         'public',
         'sort',
+        'articyl',
     ];
 
     public function registerMediaCollections() {
@@ -47,6 +48,10 @@ class Product extends Model implements TranslatableContract ,HasMedia
             ->useFallbackUrl('/img/no-photo-600.jpg')
 
             ->useFallbackPath(public_path('/img/no-photo-600.jpg'));
+
+        $this->addMediaConversion('big')
+            ->watermark(public_path('/img/watermark.png'))
+            ->watermarkPosition(Manipulations::POSITION_CENTER);
 
         $this
             ->addMediaConversion('thumb')
@@ -66,5 +71,4 @@ class Product extends Model implements TranslatableContract ,HasMedia
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-
 }

@@ -1,8 +1,8 @@
 <section class="main_sale py-5">
     <div class="container">
 
-        <h2><span>Акційні</span> Товари</h2>
-        <p>В нас найприємніші ціни та найкращі пропозиції</p>
+        <h2><span>{{__('sale_product')}}</span> {{__('product')}}</h2>
+        <p>{{__('sale_slogan')}}</p>
 
         <div class="row sale_slider">
             @foreach($saleProducts as $sale_item)

@@ -31,8 +31,16 @@ Route::group([
     Route::get('news', 'urolController@news')->name('news');
     Route::get('news/{slug?}', 'urolController@item')->name('item');
     Route::get('service/{slug?}', 'urolController@service')->name('service');
+    Route::get('catalog/{slug}', 'urolController@catalog')->name('catalog');
+    Route::get('product/{slug}', 'urolController@product')->name('product');
+    Route::get('pages/{slug}', 'urolController@pages')->name('pages');
+
+    Route::post('question', 'questionController@store')->name('question');
+    Route::post('question-contact', 'questionController@storeContact')->name('questionContact');
 
 });
+
+
 
 //admin panel
     $groupData = [
@@ -53,6 +61,9 @@ Route::group([
         Route::resource('characteristics', 'AdminCharacteristicController')->names('admin.character')->only('index', 'edit', 'create', 'store', 'update', 'destroy');
         Route::resource('product-character', 'AdminProductCharacteristic')->names('admin.product-character')->only('edit', 'store', 'update');
         Route::resource('contacts', 'AdminContactController')->names('admin.contacts')->only('edit', 'update');
+        Route::resource('pages', 'AdminPagesController')->names('admin.pages')->only('index','edit', 'update');
+        Route::resource('question', 'AdminQuestionController')->names('admin.question')->only('index','show', 'destroy');
+        Route::resource('feed-back', 'AdminFeedBackController')->names('admin.feedBack')->only('index','show', 'destroy');
 
         Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
 

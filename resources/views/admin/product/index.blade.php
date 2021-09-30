@@ -7,7 +7,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/form-select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/select2/select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/select2/select2-materialize.css')}}">
+    <link rel="stylesheet" type="text/css"
+          href="{{asset('administrator/assets/vendors/select2/select2-materialize.css')}}">
 @endsection
 
 @section('new-js')
@@ -15,7 +16,7 @@
     <script src="{{asset('administrator/assets/vendors/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('administrator/assets/js/scripts/form-select2.min.js')}}"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('.tooltipped').tooltip();
         });
 
@@ -56,7 +57,6 @@
                         <div class="users-list-table">
 
 
-
                             <div class="card">
                                 <div class="card-content">
 
@@ -68,6 +68,7 @@
                                             <tr>
                                                 <th>Фото</th>
                                                 <th style="width: 50%">Название</th>
+                                                <th>Ціна</th>
                                                 <th>Категория</th>
                                                 <th>Статус</th>
                                                 <th>Сортировка</th>
@@ -83,6 +84,23 @@
                                                              src="{{$item->getFirstMediaUrl('product', 'thumb-p')}}"/>
                                                     </td>
                                                     <td>{{$item->translate('ru', true)->title}}</td>
+                                                    <td>
+                                                        <div class="price d-flex justify-content-end">
+                                                            <div>
+                                                                {{$item->price}} .грн
+                                                            </div>
+                                                            @if($item->price_sale)
+                                                                <div class="orange-text">
+                                                                    <small>
+                                                                        <s>
+                                                                            {{$item->price_sale}} .грн
+                                                                        </s>
+                                                                    </small>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+
+                                                    </td>
                                                     <td>{{$item->category->translate('ru', true)->title}}</td>
                                                     <td>
                                                         @if ($item->public==1)
@@ -97,16 +115,18 @@
                                                     </td>
                                                     <td>{{$item->sort}}</td>
                                                     <td class="">
-                                                        <form method="POST" action="{{route('admin.product.destroy', $item->id)}} "
+                                                        <form method="POST"
+                                                              action="{{route('admin.product.destroy', $item->id)}} "
                                                               class="col right"
                                                         >
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button class="btn-floating mb-1 waves-effect waves-light tooltipped"
-                                                                    type="submit"
-                                                                    href="#"
-                                                                    data-position="left"
-                                                                    data-tooltip="Удалить"
+                                                            <button
+                                                                class="btn-floating mb-1 waves-effect waves-light tooltipped"
+                                                                type="submit"
+                                                                href="#"
+                                                                data-position="left"
+                                                                data-tooltip="Удалить"
                                                             >
                                                                 <i class="material-icons">clear</i>
                                                             </button>
@@ -135,7 +155,7 @@
                                         </table>
                                     </div>
                                     <div class="paginate">
-                                            {{ $paginator->appends($_GET)->links() }}
+                                        {{ $paginator->appends($_GET)->links() }}
                                     </div>
                                 </div>
                             </div>

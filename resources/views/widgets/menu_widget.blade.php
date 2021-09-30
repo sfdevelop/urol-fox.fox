@@ -38,7 +38,7 @@
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category)
                                 <li><a class="dropdown-item"
-                                       href=" category.html"> {{$category->translate(app()->getLocale(), true)->title}} </a>
+                                       href="{{route('catalog', $category->slug)}}"> {{$category->translate(app()->getLocale(), true)->title}} </a>
                                     @if($category->childrenCategories->count()>0)
                                         <ul class="submenu dropdown-menu">
                                             @foreach ($category->childrenCategories as $childCategory)
@@ -53,10 +53,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown"> {{trans('menu.menu_service')}} </a>
 
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu w-300">
                             @foreach ($services as $service)
-                                <li>
-                                    <a class="dropdown-item"
+                                <li class="overflow-hidden">
+                                    <a class="dropdown-item w-300"
                                        href="{{route('service', $service->slug)}} ">
                                         {{$service->translate(app()->getLocale(), true)->title}}
                                     </a>
@@ -67,7 +67,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('news') }}"> {{trans('menu.menu_news')}} </a></li>
-                    <li class="nav-item"><a class="nav-link" href="pay.html"> {{trans('menu.menu_pay')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('pages', 'oplata-i-dostavka') }}"> {{trans('menu.menu_pay')}}</a></li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('contacts') }}"> {{trans('menu.menu_contacts')}}</a>
                     </li>
@@ -76,8 +76,8 @@
                     <div class="d-flex flex-column head-phone">
                         <div>
                             <img src="{{asset('assets/i/call.svg')}}" alt="call">
-                            <a href="">
-                                +38 067 657 87 17
+                            <a href="tel:{{$head_phone->phone1}}">
+                                {{$head_phone->phone1}}
                             </a>
                         </div>
                         <div class="text-right margin-t-5">
@@ -102,3 +102,4 @@
         </nav>
     </div>
 </section>
+

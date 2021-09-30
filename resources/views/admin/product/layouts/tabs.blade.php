@@ -3,6 +3,14 @@
         <div class="row active" id="main-view"
              style="display: block;">
             <div class="col s12">
+                <div class="input-field col s12 m12">
+                    {!! Form::text('articyl', 'Артикул')
+                        ->placeholder('Артикул')
+                        ->value(old('articyl',$item->articyl ?? ''))
+                    !!}
+                </div>
+            </div>
+            <div class="col s12">
                 <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
                     @foreach(config('translatable.locales') as $locale)
                         <li class="tab">
@@ -12,6 +20,7 @@
                     @endforeach
                 </ul>
             </div>
+
             <div class="col s12">
                 @foreach(config('translatable.locales') as $locale)
                     <div id="lang-{{ strtoupper($locale) }}"

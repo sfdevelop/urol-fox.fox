@@ -3,6 +3,7 @@
 namespace App\Services\Menu;
 
 use App\Model\Category;
+use App\Model\Contact;
 use App\Model\Service;
 
 class menuService
@@ -19,10 +20,17 @@ class menuService
 
     public function services()
     {
-        $services=Service::withTranslation()
+        $services = Service::withTranslation()
             ->oldest()
             ->get();
 
         return $services;
+    }
+
+    public function headPhone()
+    {
+        $head_phone = Contact::first('phone1');
+
+        return $head_phone;
     }
 }

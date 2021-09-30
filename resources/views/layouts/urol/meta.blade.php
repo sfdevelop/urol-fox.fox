@@ -8,6 +8,7 @@
 <meta name="googlebot" content="index, follow">
 <meta name="google" content="notranslate">
 <meta name="format-detection" content="telephone=no">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 @section('css_blade')

@@ -37,6 +37,13 @@
         </li>
 
         <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.pages.index')}}">
+                <i class="material-icons dp48">pages</i>
+                <span class="menu-title" data-i18n="Form Layouts">Страницы</span>
+            </a>
+        </li>
+
+        <li class="bold">
             <a class="waves-effect waves-cyan " href="{{route('admin.service.index')}}">
                 <i class="material-icons dp48">perm_data_setting</i>
                 <span class="menu-title" data-i18n="Form Layouts">Услуги</span>
@@ -76,6 +83,25 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.contacts.edit', 1)}}">
                 <i class="material-icons dp48">contacts</i>
                 <span class="menu-title" data-i18n="Form Layouts">Контакты</span>
+            </a>
+        </li>
+
+        <li class="navigation-header">
+            <a class="navigation-header-text">Уведомления</a>
+            <i class="navigation-header-icon material-icons">Уведомления</i>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.question.index')}}">
+                <i class="material-icons dp48">question_answer</i>
+                <span class="menu-title" data-i18n="Form Layouts">Вопросы</span>
+            </a>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.feedBack.index')}}">
+                <i class="material-icons dp48">record_voice_over</i>
+                <span class="menu-title" data-i18n="Form Layouts">Обратная связь</span>
             </a>
         </li>
 

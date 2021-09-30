@@ -82,6 +82,10 @@ class sliderService
             ->latest('id')
             ->get();
 
+        if ($saleProducts->count()<1){
+            $saleProducts=$this->hitProduct();
+        }
+
         return $saleProducts;
     }
 
@@ -110,6 +114,19 @@ class sliderService
         ->get();
 
         return $newsLatest;
+    }
+
+    private function hitProduct()
+    {
+        $saleProducts = Product::orderBy(DB::raw('RAND()'))
+            ->with('media')
+            ->withTranslation()
+            ->where('public', true)
+            ->whereNotNull('price_sale')
+            ->take(4)
+            ->get();
+
+        return $saleProducts;
     }
 
 }

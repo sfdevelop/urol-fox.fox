@@ -17,6 +17,8 @@
 
 <!--JS-->
 <script src="{{asset('assets/js/main.min.js')}}"></script>
+@section('new-js')
+@show
 </body>
 
 </html>

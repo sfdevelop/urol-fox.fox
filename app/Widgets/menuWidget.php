@@ -34,11 +34,13 @@ class menuWidget extends AbstractWidget
 
         $categories=$this->menu->categories();
         $services=$this->menu->services();
+        $head_phone=$this->menu->headPhone();
 
         return view('widgets.menu_widget', [
             'config' => $this->config,
             'categories' => $categories,
             'services' => $services,
+            'head_phone' => $head_phone,
         ]);
     }
 }

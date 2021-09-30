@@ -6,8 +6,11 @@
     @include('layouts.urol.new')
     @include('layouts.urol.service_main')
 
-    @if($saleProducts->count()>0)
+    @if($saleProducts->count()!==4)
         @include('layouts.urol.sale')
+
+    @else
+        @include('layouts.urol.hit')
     @endif
 
     @include('layouts.urol.subscribe')

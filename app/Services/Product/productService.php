@@ -62,4 +62,24 @@ class productService
 
         return $character;
     }
+
+    public function showProduct($slug)
+    {
+        $item=Product::withTranslation()
+            ->with('media')
+            ->where('slug', $slug)
+            ->where('public', true)
+            ->firstOrFail();
+
+        return $item;
+    }
+
+    public function productCharacteristic($slug)
+    {
+        $item=Product::where('slug',$slug)->firstOrFail('id');
+
+        $character=$this->show_characteristics($item->id);
+
+        return $character;
+    }
 }

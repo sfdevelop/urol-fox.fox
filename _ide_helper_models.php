@@ -198,6 +198,8 @@ namespace App\Model{
  * @property string|null $phone2
  * @property string|null $phone3
  * @property string $email
+ * @property string|null $time
+ * @property string|null $weekend
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Model\ContactTranslation|null $translation
@@ -219,12 +221,39 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact wherePhone1($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact wherePhone2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact wherePhone3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact whereTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact whereTranslation($translationField, $value, $locale = null, $method = 'whereHas', $operator = '=')
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact whereTranslationLike($translationField, $value, $locale = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact whereWeekend($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Contact withTranslation()
  */
 	class Contact extends \Eloquent {}
+}
+
+namespace App\Model{
+/**
+ * App\Model\ContactQuestion
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $mail
+ * @property string $question
+ * @property int $is_see
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereIsSee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereMail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactQuestion whereUpdatedAt($value)
+ */
+	class ContactQuestion extends \Eloquent {}
 }
 
 namespace App\Model{
@@ -235,6 +264,8 @@ namespace App\Model{
  * @property int $contact_id
  * @property string $locale
  * @property string $address
+ * @property string|null $weekend
+ * @property string|null $time
  * @property string|null $seo_title
  * @property string|null $seo_key
  * @property string|null $seo_description
@@ -248,8 +279,72 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereSeoDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereSeoKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereWeekend($value)
  */
 	class ContactTranslation extends \Eloquent {}
+}
+
+namespace App\Model{
+/**
+ * App\Model\Pages
+ *
+ * @property int $id
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
+ * @property-read int|null $media_count
+ * @property-read \App\Model\PagesTranslation|null $translation
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\PagesTranslation[] $translations
+ * @property-read int|null $translations_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages findSimilarSlugs($attribute, $config, $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages listsTranslations($translationField)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages notTranslatedIn($locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages orWhereTranslation($translationField, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages orWhereTranslationLike($translationField, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages orderByTranslation($translationField, $sortMethod = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages translated()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages translatedIn($locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereTranslation($translationField, $value, $locale = null, $method = 'whereHas', $operator = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereTranslationLike($translationField, $value, $locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Pages withTranslation()
+ */
+	class Pages extends \Eloquent implements \Astrotomic\Translatable\Contracts\Translatable, \Spatie\MediaLibrary\HasMedia\HasMedia {}
+}
+
+namespace App\Model{
+/**
+ * App\Model\PagesTranslation
+ *
+ * @property int $id
+ * @property int $pages_id
+ * @property string $locale
+ * @property string $title
+ * @property string|null $description
+ * @property string|null $seo_title
+ * @property string|null $seo_key
+ * @property string|null $seo_description
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation wherePagesId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereSeoDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereSeoKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\PagesTranslation whereTitle($value)
+ */
+	class PagesTranslation extends \Eloquent {}
 }
 
 namespace App\Model{
@@ -325,6 +420,7 @@ namespace App\Model{
  * @property int $id
  * @property int $category_id
  * @property string $slug
+ * @property string|null $articyl
  * @property float $price
  * @property float|null $price_sale
  * @property int $public
@@ -351,6 +447,7 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product translated()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product translatedIn($locale = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereArticyl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereDeletedAt($value)
@@ -395,6 +492,31 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ProductTranslation whereTitle($value)
  */
 	class ProductTranslation extends \Eloquent {}
+}
+
+namespace App\Model{
+/**
+ * App\Model\Question
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $mail
+ * @property string $question
+ * @property int $is_see
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereIsSee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereMail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Question whereUpdatedAt($value)
+ */
+	class Question extends \Eloquent {}
 }
 
 namespace App\Model{

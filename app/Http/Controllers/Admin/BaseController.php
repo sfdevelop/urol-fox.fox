@@ -6,10 +6,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Model\Service;
+use App\Services\Category\categoryService;
 use App\Services\Characteristics\characteristicsService;
 use App\Services\Contacts\ContactsService;
 use App\Services\Options\optionsService;
+use App\Services\Pages\pagesService;
 use App\Services\Post\postService;
+use App\Services\Product\productService;
+use App\Services\Quest\questService;
 use App\Services\Service\serviceService;
 use App\Services\slider\sliderService;
 
@@ -22,6 +26,10 @@ class BaseController extends Controller
     public $slider;
     public $contact;
     public $service;
+    public $category;
+    public $product;
+    public $pages;
+    public $questions;
 
     /**
      * @param $post
@@ -33,7 +41,11 @@ class BaseController extends Controller
         characteristicsService $character,
         sliderService          $slider,
         ContactsService        $contact,
-        serviceService         $service
+        serviceService         $service,
+        categoryService        $category,
+        productService         $product,
+        pagesService           $pages,
+        questService           $questions
     )
     {
         $this->post = $postService;
@@ -42,5 +54,9 @@ class BaseController extends Controller
         $this->slider = $slider;
         $this->contact = $contact;
         $this->service = $service;
+        $this->category = $category;
+        $this->product = $product;
+        $this->pages = $pages;
+        $this->questions = $questions;
     }
 }
