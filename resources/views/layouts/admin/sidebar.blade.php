@@ -95,6 +95,7 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.question.index')}}">
                 <i class="material-icons dp48">question_answer</i>
                 <span class="menu-title" data-i18n="Form Layouts">Вопросы</span>
+                @widget('countQuestions')
             </a>
         </li>
 
@@ -102,6 +103,15 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.feedBack.index')}}">
                 <i class="material-icons dp48">record_voice_over</i>
                 <span class="menu-title" data-i18n="Form Layouts">Обратная связь</span>
+                @widget('countFeedBackWidget')
+            </a>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.callBack.index')}}">
+                <i class="material-icons dp48">local_phone</i>
+                <span class="menu-title" data-i18n="Form Layouts">Заказ звонка</span>
+                @widget('countCall')
             </a>
         </li>
 

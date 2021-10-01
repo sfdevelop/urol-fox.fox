@@ -1,6 +1,6 @@
 @extends('layouts.admin_layouts')
 
-@section('title', 'Обратная связь' )
+@section('title', 'Заказ обратного звонка' )
 
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/page-users.min.css')}}">
@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s10 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Обратная связь</span></h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0"><span>Заказ обратного звонка</span></h5>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,6 @@
                                             <thead>
                                             <tr>
                                                 <th style="width: 50%">Имя</th>
-                                                <th>e-mail</th>
                                                 <th>Статус</th>
                                                 <th>Дата</th>
                                                 <th class="right">Управление</th>
@@ -53,8 +52,7 @@
                                             <tbody>
                                             @forelse ( $items as $item)
                                                 <tr>
-                                                    <td>{{$item->title}}</td>
-                                                    <td>{{$item->mail}}</td>
+                                                    <td>{{$item->name}}</td>
                                                     <td>
                                                         @if ($item->is_see==0)
                                                             <span class="chip green lighten-5">
@@ -65,13 +63,13 @@
                                                     <td>{{$item->created_at->format('d/m/Y H:i:s')}}</td>
                                                     <td class="right">
                                                         <a class="mb-6 btn-floating waves-effect waves-light cyan col p-0 tooltipped"
-                                                           href="{{route('admin.feedBack.show', $item->id)}}"
+                                                           href="{{route('admin.callBack.show', $item->id)}}"
                                                            data-position="left"
                                                            data-tooltip="Просмотреть"
                                                         >
                                                             <i class="material-icons dp48">create</i>
                                                         </a>
-                                                        <form method="POST" action="{{route('admin.feedBack.destroy', $item->id)}} "
+                                                        <form method="POST" action="{{route('admin.callBack.destroy', $item->id)}} "
                                                               class="col"
                                                         >
                                                             @csrf

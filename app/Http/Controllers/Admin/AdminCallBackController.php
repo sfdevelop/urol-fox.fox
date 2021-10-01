@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Model\ContactQuestion;
+use App\Model\Call;
 use Illuminate\Http\Request;
 
-class AdminFeedBackController extends BaseController
+class AdminCallBackController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,10 @@ class AdminFeedBackController extends BaseController
      */
     public function index()
     {
-        $items=$this->questions->showFeedBack();
+        $items=$this->questions->showCall();
 
-        return view('admin.feedback.index', compact('items'));
+        return view('admin.callback.index', compact('items'));
     }
-
     /**
      * Display the specified resource.
      *
@@ -28,9 +27,9 @@ class AdminFeedBackController extends BaseController
      */
     public function show($id)
     {
-        $contactQuestion=$this->questions->idFeedback($id);
+        $call=$this->questions->idCallback($id);
 
-        return view('admin.feedback.edit', compact('contactQuestion'));
+        return view('admin.callback.edit', compact('call'));
     }
 
     /**
@@ -41,7 +40,7 @@ class AdminFeedBackController extends BaseController
      */
     public function destroy($id)
     {
-        $result = $this->questions->delete_item($id);
+        $result = $this->questions->delete_call($id);
 
         if ($result) {
             return back()->with(['success' => 'УСПЕХ! Ваши данные успешно Удалены. Желаем дальнейшей приятной работы ']);

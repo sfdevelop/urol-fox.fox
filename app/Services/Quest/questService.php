@@ -2,6 +2,7 @@
 
 namespace App\Services\Quest;
 
+use App\Model\Call;
 use App\Model\ContactQuestion;
 use App\Model\Question;
 
@@ -36,12 +37,21 @@ class questService
     {
         $contactQuestion=ContactQuestion::findOrFail($id);
 
+        $this->updateIsSee($contactQuestion);
+
         return $contactQuestion;
     }
 
     public function delete_item($id)
     {
         $result=  ContactQuestion::findOrFail($id)->delete();
+
+        return $result;
+    }
+
+    public function delete_call($id)
+    {
+        $result=  Call::findOrFail($id)->delete();
 
         return $result;
     }
@@ -66,5 +76,27 @@ class questService
         ]);
 
         return $message;
+    }
+
+    public function addCall($request)
+    {
+        Call::create($request->all());
+    }
+
+    public function showCall()
+    {
+        $items=Call::latest('id')
+            ->paginate(15);
+
+        return $items;
+    }
+
+    public function idCallback($id)
+    {
+        $call=Call::findOrFail($id);
+
+        $this->updateIsSee($call);
+
+        return $call;
     }
 }

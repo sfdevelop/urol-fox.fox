@@ -82,7 +82,7 @@
                         </div>
                         <div class="text-right margin-t-5">
                             <small>
-                                <a href="">{{trans('menu.call_order')}}</a>
+                                <a href="" data-toggle="modal" data-target="#call">{{trans('menu.call_order')}}</a>
                             </small>
                         </div>
                     </div>

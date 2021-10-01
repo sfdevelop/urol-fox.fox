@@ -62,7 +62,7 @@
                                                               </span>
                                                         @endif
                                                     </td>
-                                                    <td>{{$item->created_at->format('d/m/Y h:m:s')}}</td>
+                                                    <td>{{$item->created_at->format('d/m/Y H:i:s')}}</td>
                                                     <td class="right">
                                                         <a class="mb-6 btn-floating waves-effect waves-light cyan col p-0 tooltipped"
                                                            href="{{route('admin.question.show', $item->id)}}"

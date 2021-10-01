@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\App;
 
-class questionRequest extends FormRequest
+class CallRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +25,7 @@ class questionRequest extends FormRequest
     {
         return [
             'name'           => 'required|string',
-            'mail'           => 'required|email',
-            'question'       => 'required|string',
+            'phone'          => 'required|min:10|max:13',
         ];
     }
 }

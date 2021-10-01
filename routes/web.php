@@ -37,6 +37,7 @@ Route::group([
 
     Route::post('question', 'questionController@store')->name('question');
     Route::post('question-contact', 'questionController@storeContact')->name('questionContact');
+    Route::post('call', 'questionController@call')->name('call');
 
 });
 
@@ -64,6 +65,7 @@ Route::group([
         Route::resource('pages', 'AdminPagesController')->names('admin.pages')->only('index','edit', 'update');
         Route::resource('question', 'AdminQuestionController')->names('admin.question')->only('index','show', 'destroy');
         Route::resource('feed-back', 'AdminFeedBackController')->names('admin.feedBack')->only('index','show', 'destroy');
+        Route::resource('call-back', 'AdminCallBackController')->names('admin.callBack')->only('index','show', 'destroy');
 
         Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
 

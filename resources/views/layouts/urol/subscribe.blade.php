@@ -84,6 +84,8 @@
                     console.log(response);
                     if (response) {
                         $('#success-message').text(response.success);
+                        $('#thanks_title').text(response.title_thanks);
+                        $('#thanks').modal('show')
                         $("#price-form")[0].reset();
 
                     }

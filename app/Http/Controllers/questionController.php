@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\MessageEvent;
-use App\Events\QuestionEvent;
 use App\Http\Controllers\Admin\BaseController;
-use App\Http\Requests\PricesRequest;
+use App\Http\Requests\CallRequest;
 use App\Http\Requests\questionRequest;
-use App\Mail\SendMailPrice;
-use App\Model\ContactQuestion;
-use App\Model\Price;
-use App\Model\Question;
-use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+
 
 class questionController extends BaseController
 {
@@ -24,18 +17,34 @@ class questionController extends BaseController
 
         $this->questions->addQuestion($request);
 
-        return response()->json(['success' => 'Ми отримали ваші дані, та вишлемо вам прайс найближчим часом']);
+        return response()->json([
+            'success' => __('text_success_question'),
+            'title_thanks' => __('thanks')
+        ]);
 
     }
 
     public function storeContact(questionRequest $request)
     {
 
-        $message=$this->questions->addQuestionContact($request);;
+        $this->questions->addQuestionContact($request);
 
-//        event(new MessageEvent($message));
+        return response()->json([
+            'success' => __('text_success_question'),
+            'title_thanks' => __('thanks')
+        ]);
 
-        return response()->json(['success' => 'Ми отримали ваші дані, та вишлемо вам прайс найближчим часом']);
+    }
+
+    public function call(CallRequest $request)
+    {
+
+        $this->questions->addCall($request);
+
+        return response()->json([
+            'success' => __('text_success_call'),
+            'title_thanks' => __('thanks')
+        ]);
 
     }
 

@@ -53,8 +53,11 @@
                 </ul>
             </div>
             <div class="call-order">
-                <a href="" class="btn">{{__('call_order')}}</a>
+                <a href="" class="btn" data-toggle="modal" data-target="#call">{{__('call_order')}}</a>
             </div>
         </div>
     </div>
 </footer>
+
+@include('layouts.modal.thanks')
+@include('layouts.modal.call')

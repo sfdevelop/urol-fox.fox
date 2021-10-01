@@ -12,6 +12,27 @@
 
 namespace App\Model{
 /**
+ * App\Model\Call
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $phone
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereUpdatedAt($value)
+ */
+	class Call extends \Eloquent {}
+}
+
+namespace App\Model{
+/**
  * App\Model\Category
  *
  * @property int $id
