@@ -19,11 +19,13 @@ namespace App\Model{
  * @property string $phone
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $is_see
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereIsSee($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Call whereUpdatedAt($value)
@@ -304,6 +306,33 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\ContactTranslation whereWeekend($value)
  */
 	class ContactTranslation extends \Eloquent {}
+}
+
+namespace App\Model{
+/**
+ * App\Model\Order
+ *
+ * @property int $id
+ * @property string $product
+ * @property string|null $vendor
+ * @property string $price
+ * @property string $name
+ * @property string $phone
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereProduct($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Order whereVendor($value)
+ */
+	class Order extends \Eloquent {}
 }
 
 namespace App\Model{

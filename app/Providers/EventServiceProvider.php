@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Events\MessageEvent;
 use App\Events\QuestionEvent;
 use App\Events\CallEvent;
+use App\Events\OrderEvent;
 use App\Listeners\MessageListener;
 use App\Listeners\QuestionListener;
 use App\Listeners\CallListener;
+use App\Listeners\OrderListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -37,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
             CallListener::class,
         ],
 
+        OrderEvent::class => [
+            OrderListener::class,
+        ],
     ];
 
     /**

@@ -11,9 +11,6 @@
 |
 */
 
-//use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\Route;
-
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::redirect('/', '/ru');
@@ -24,7 +21,6 @@ Route::group([
     'middleware' => [ 'localeSessionRedirect' , 'localizationRedirect' , 'localeViewPath' ]
 ], function()
 {
-
     Auth::routes(['register' => false]);
     Route::get('/', 'urolController@index')->name('main');
     Route::get('contacts', 'urolController@contacts')->name('contacts');
@@ -38,10 +34,8 @@ Route::group([
     Route::post('question', 'questionController@store')->name('question');
     Route::post('question-contact', 'questionController@storeContact')->name('questionContact');
     Route::post('call', 'questionController@call')->name('call');
-
+    Route::post('add-order', 'OrderController@addOrder')->name('addOrder');
 });
-
-
 
 //admin panel
     $groupData = [
@@ -68,5 +62,4 @@ Route::group([
         Route::resource('call-back', 'AdminCallBackController')->names('admin.callBack')->only('index','show', 'destroy');
 
         Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
-
     });

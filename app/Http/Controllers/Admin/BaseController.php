@@ -10,6 +10,7 @@ use App\Services\Category\categoryService;
 use App\Services\Characteristics\characteristicsService;
 use App\Services\Contacts\ContactsService;
 use App\Services\Options\optionsService;
+use App\Services\Order\orderService;
 use App\Services\Pages\pagesService;
 use App\Services\Post\postService;
 use App\Services\Product\productService;
@@ -30,6 +31,7 @@ class BaseController extends Controller
     public $product;
     public $pages;
     public $questions;
+    public $order;
 
     /**
      * @param $post
@@ -45,7 +47,9 @@ class BaseController extends Controller
         categoryService        $category,
         productService         $product,
         pagesService           $pages,
-        questService           $questions
+        questService           $questions,
+        orderService           $order
+
     )
     {
         $this->post = $postService;
@@ -58,5 +62,6 @@ class BaseController extends Controller
         $this->product = $product;
         $this->pages = $pages;
         $this->questions = $questions;
+        $this->order = $order;
     }
 }

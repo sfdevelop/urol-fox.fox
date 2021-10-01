@@ -97,7 +97,7 @@ class urolController extends BaseController
     public function pages($slug)
     {
         $item=$this->pages->pagesItem($slug);
-//dd($item);
+
         return view('urol.Pages.pages', compact('item'));
     }
 }

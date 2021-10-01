@@ -14,7 +14,8 @@
 
 
 @widget('footerWidget')
-
+@section('new-modal')
+@show
 <!--JS-->
 <script src="{{asset('assets/js/main.min.js')}}"></script>
 <script>
