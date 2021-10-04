@@ -67,6 +67,7 @@ class productService
     {
         $item=Product::withTranslation()
             ->with('media')
+            ->with('category')
             ->where('slug', $slug)
             ->where('public', true)
             ->firstOrFail();

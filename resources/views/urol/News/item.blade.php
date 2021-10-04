@@ -3,13 +3,9 @@
 @section('content')
     <section class="breadcrumb-top mt-180">
         <div class="container">
-            <nav aria-label="breadcrumb ">
-                <ol class="breadcrumb ">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
-                </ol>
-            </nav>
+
+            {{ Breadcrumbs::render('item', $item) }}
+
             <div class="title pt-3 pb-5 text-center">
                 <h1>{{$item->translate(app()->getLocale(), true)->title}}</h1>
             </div>

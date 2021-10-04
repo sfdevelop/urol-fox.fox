@@ -34,7 +34,9 @@ class categoryService
 
     public function parentCategory($slug)
     {
-        $id_parent = Category::where('slug', $slug)
+        $id_parent = Category::withTranslation()
+            ->with('parentCategory')
+            ->where('slug', $slug)
             ->first();
 
         return $id_parent;
@@ -80,7 +82,7 @@ class categoryService
             $categoryProduct = $categoryProduct->merge($parentProduct);
         }
 
-        $categoryProduct=ColectionPaginate::paginate($categoryProduct, 16);
+        $categoryProduct = ColectionPaginate::paginate($categoryProduct, 16);
 
         return $categoryProduct;
     }

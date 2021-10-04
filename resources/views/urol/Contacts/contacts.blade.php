@@ -5,12 +5,9 @@
     <section class="breadcrumb-top mt-180">
         <div class="container">
             <nav aria-label="breadcrumb ">
-                <ol class="breadcrumb ">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Data</li>
-                </ol>
-            </nav>
+
+                {{ Breadcrumbs::render('contacts') }}
+
             <div class="title pt-3 pb-5 text-center">
                 <h1>{{__('contacts_title')}}</h1>
             </div>

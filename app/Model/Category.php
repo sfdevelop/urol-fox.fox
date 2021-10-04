@@ -62,6 +62,11 @@ class Category extends Model implements TranslatableContract ,HasMedia
         return $this->hasMany(Category::class)->with('categories')->withTranslation();
     }
 
+    public function parentCategory()
+    {
+        return $this->belongsTo(self::class, 'category_id', 'id')->withTranslation();
+    }
+
 
 //    public static function getCategories() {
 //        // Получаем одним запросом все разделы
