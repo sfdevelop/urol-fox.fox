@@ -71,7 +71,7 @@ class AdminPagesController extends Controller
         $this->MultiUpdateAdminImages($request, $this->model->find($id), $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.pages.edit', $item)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
+            return redirect()->route('admin.pages.edit', $id)->with(['success' => ' Ваши данные успешно сохранены. Желаем дальнейшей приятной работы']);
         } else {
             return back()->withErrors(['msg' => "Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору."])->withInput();
         }

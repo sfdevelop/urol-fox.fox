@@ -21,6 +21,7 @@ class urolController extends BaseController
         $contactsPhone = $this->slider->contactsPhone();
         $serviceMain = $this->slider->serviceMain();
         $newsLatest = $this->slider->newsLatest();
+        $this->slider->seoData(2);
 
         return view('urol.main',
             compact(
@@ -36,6 +37,7 @@ class urolController extends BaseController
     public function contacts()
     {
         $contact = $this->contact->ContactFoot();
+        $this->slider->seoData(3);
 
         return view('urol.Contacts.contacts', compact('contact'));
     }
@@ -43,6 +45,7 @@ class urolController extends BaseController
     public function news()
     {
         $paginator = $this->post->indexPost();
+        $this->slider->seoData(4);
 
         return view('urol.News.news', compact('paginator'));
     }
@@ -51,6 +54,8 @@ class urolController extends BaseController
     {
         $item = $this->post->item($slug);
         $latest = $this->post->latestNews();
+
+        $this->seo->SeoMain($item, 'news');
 
         return view('urol.News.item',
             compact(
@@ -64,6 +69,8 @@ class urolController extends BaseController
     {
         $item = $this->service->itemService($slug);
 
+        $this->seo->SeoMain($item, 'service');
+
         return view('urol.Service.service', compact('item'));
     }
 
@@ -75,6 +82,7 @@ class urolController extends BaseController
 
         $categoryProduct = $this->category->categoryProduct($category);
 
+        $this->seo->SeoMain($category, 'category');
 
         return view('urol.Category.subcategory',
             compact(
@@ -91,12 +99,16 @@ class urolController extends BaseController
 
         $character = $this->product->productCharacteristic($slug);
 
+        $this->seo->SeoMain($item, 'product');
+
         return view('urol.Product.product', compact('item', 'character'));
     }
 
     public function pages($slug)
     {
         $item=$this->pages->pagesItem($slug);
+
+        $this->slider->seoSlug($slug);
 
         return view('urol.Pages.pages', compact('item'));
     }

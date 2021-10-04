@@ -168,6 +168,7 @@ return [
         Nestable\NestableServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -236,6 +237,7 @@ return [
         'Form' => NetoJose\Bootstrap4Forms\Bootstrap4FormsFacade::class,
         'Nestable' => Nestable\Facades\NestableService::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

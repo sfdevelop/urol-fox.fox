@@ -40,20 +40,21 @@
                             </div>
                             @enderror
                         </div>
-
-                        <div class="mt-4 input-field col s12">
+                        @if($item->id===1)
+                            <div class="mt-4 input-field col s12">
 
                             <textarea name="{{ $locale }}[description]"
                                       id="description_{{ $locale }}"
                                       rows="5"
                                       class="materialize-textarea ckeditor">{{old( $locale.'.description',$item->translate($locale)->description ?? '')  }}</textarea>
-                        </div>
-
+                            </div>
+                        @endif
                         @include('layouts.admin.seo')
                     </div>
 
                 @endforeach
-                 </div>
+            </div>
+            @if($item->id===1)
                 <div class="col s12 file-field input-field">
                     <div class="btn float-left">
                         <span>Изображение</span>
@@ -72,14 +73,14 @@
                     </div>
                     @enderror
                 </div>
-
-                    <div class="col s12 m3 d-block">
-                        {!! Form::submit('Сохранить')
-                        ->id('my-btn')
-                        ->primary() !!}
-                    </div>
-                </div>
-
+            @endif
+            <div class="col s12 m3 d-block">
+                {!! Form::submit('Сохранить')
+                ->id('my-btn')
+                ->primary() !!}
+            </div>
         </div>
+
     </div>
+</div>
 </div>

@@ -11,7 +11,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
+
+{!! SEO::generate() !!}
 @section('css_blade')
 @show
-
-<title>Urol</title>

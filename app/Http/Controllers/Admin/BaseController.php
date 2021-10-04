@@ -15,6 +15,7 @@ use App\Services\Pages\pagesService;
 use App\Services\Post\postService;
 use App\Services\Product\productService;
 use App\Services\Quest\questService;
+use App\Services\Seo\Seo;
 use App\Services\Service\serviceService;
 use App\Services\slider\sliderService;
 
@@ -32,6 +33,7 @@ class BaseController extends Controller
     public $pages;
     public $questions;
     public $order;
+    public $seo;
 
     /**
      * @param $post
@@ -48,7 +50,8 @@ class BaseController extends Controller
         productService         $product,
         pagesService           $pages,
         questService           $questions,
-        orderService           $order
+        orderService           $order,
+        Seo                    $seo
 
     )
     {
@@ -63,5 +66,6 @@ class BaseController extends Controller
         $this->pages = $pages;
         $this->questions = $questions;
         $this->order = $order;
+        $this->seo = $seo;
     }
 }

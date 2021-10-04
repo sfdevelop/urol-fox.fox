@@ -33,12 +33,12 @@
                             <div class="col s10 m6 l6">
                                 <h5 class="breadcrumbs-title mt-0 mb-0"><span>Страницы</span></h5>
                             </div>
-{{--                            <div class="col s2 m6 l6 right">--}}
-{{--                                <a href="{{route('admin.news.create')}}"--}}
-{{--                                   class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right">--}}
-{{--                                    <i class="material-icons">add</i>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="col s2 m6 l6 right">--}}
+                            {{--                                <a href="{{route('admin.news.create')}}"--}}
+                            {{--                                   class="btn-floating mb-1 btn-large waves-effect waves-light mr-1 right">--}}
+                            {{--                                    <i class="material-icons">add</i>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,9 @@
                                             @include('layouts.message.message')
 
                                             @if ($item->exists)
-                                                @include('admin.pages.image')
+                                                @if($item->id===1)
+                                                    @include('admin.pages.image')
+                                                @endif
                                             @endif
 
                                             <div class="row">

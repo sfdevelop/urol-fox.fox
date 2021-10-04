@@ -4,10 +4,12 @@ namespace App\Services\slider;
 
 use App\Model\Category;
 use App\Model\Contact;
+use App\Model\Pages;
 use App\Model\Post;
 use App\Model\Product;
 use App\Model\Service;
 use App\Model\Slider;
+use App\Services\Seo\Seo;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +17,12 @@ class sliderService
 {
 
     private $countDate;
+    private $seo;
 
-    public function __construct()
+    public function __construct( Seo $seo)
     {
         $this->countDate = 30;
+        $this->seo=$seo;
     }
 
     public function indexSlider()
@@ -114,6 +118,24 @@ class sliderService
         ->get();
 
         return $newsLatest;
+    }
+
+    public function seoData($id)
+    {
+        $seo=Pages::withTranslation()
+            ->where('id',$id)
+            ->firstOrFail();
+        $this->seo->SeoMain($seo);
+        return $seo;
+    }
+
+    public function seoSlug($slug)
+    {
+        $seo=Pages::withTranslation()
+            ->where('slug',$slug)
+            ->firstOrFail();
+        $this->seo->SeoMain($seo, 'pages');
+        return $seo;
     }
 
     private function hitProduct()

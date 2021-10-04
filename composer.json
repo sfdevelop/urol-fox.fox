@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3.9|^8.0",
         "arrilot/laravel-widgets": "^3.13",
+        "artesaos/seotools": "^0.20.2",
         "astrotomic/laravel-translatable": "^11.9",
         "ckeditor/ckeditor": "^4.16",
         "cviebrock/eloquent-sluggable": "6.*",
