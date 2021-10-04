@@ -19,14 +19,14 @@
         </h1>
     </div>
 
+
+
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out"
         data-menu="menu-navigation" data-collapsible="menu-accordion">
 
-        <li class="bold">
-            <a class="waves-effect waves-cyan " href="{{route('admin.news.index')}}">
-                <i class="material-icons">receipt</i>
-                <span class="menu-title" data-i18n="Form Layouts">Новости</span>
-            </a>
+        <li class="navigation-header">
+            <a class="navigation-header-text">Страницы</a>
+            <i class="navigation-header-icon material-icons">Страницы</i>
         </li>
 
         <li class="bold">
@@ -49,10 +49,18 @@
                 <span class="menu-title" data-i18n="Form Layouts">Услуги</span>
             </a>
         </li>
+
         <li class="bold">
-            <a class="waves-effect waves-cyan " href="{{route('admin.option.edit', 2)}}">
-                <i class="material-icons dp48">settings</i>
-                <span class="menu-title" data-i18n="Form Layouts">Настройки</span>
+            <a class="waves-effect waves-cyan " href="{{route('admin.news.index')}}">
+                <i class="material-icons">receipt</i>
+                <span class="menu-title" data-i18n="Form Layouts">Новости</span>
+            </a>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.contacts.edit', 1)}}">
+                <i class="material-icons dp48">contacts</i>
+                <span class="menu-title" data-i18n="Form Layouts">Контактная информация</span>
             </a>
         </li>
 
@@ -76,13 +84,6 @@
             <a class="waves-effect waves-cyan " href="{{route('admin.product.index')}}">
                 <i class="material-icons dp48">beach_access</i>
                 <span class="menu-title" data-i18n="Form Layouts">Продукция</span>
-            </a>
-        </li>
-
-        <li class="bold">
-            <a class="waves-effect waves-cyan " href="{{route('admin.contacts.edit', 1)}}">
-                <i class="material-icons dp48">contacts</i>
-                <span class="menu-title" data-i18n="Form Layouts">Контакты</span>
             </a>
         </li>
 
@@ -117,9 +118,21 @@
 
         <li class="bold">
             <a class="waves-effect waves-cyan " href="{{route('admin.order.index')}}">
-                <i class="material-icons dp48">local_phone</i>
+                <i class="material-icons dp48">shopping_cart</i>
                 <span class="menu-title" data-i18n="Form Layouts">Заказы</span>
                 @widget('countOrder')
+            </a>
+        </li>
+
+        <li class="navigation-header">
+            <a class="navigation-header-text">Настройки</a>
+            <i class="navigation-header-icon material-icons">Настройки</i>
+        </li>
+
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.option.edit', 2)}}">
+                <i class="material-icons dp48">settings</i>
+                <span class="menu-title" data-i18n="Form Layouts">Настройки</span>
             </a>
         </li>
 

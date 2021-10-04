@@ -13,6 +13,14 @@
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');
+
 Route::redirect('/', '/ru');
 Route::redirect('/admin', '/ru/login');
 

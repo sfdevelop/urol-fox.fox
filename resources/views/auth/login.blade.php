@@ -79,11 +79,11 @@
 
                         <div class="row">
                             <div class="input-field col s6 m6 l6">
-                                @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request', app()->getLocale()) }}">
-                                        Забыли пароль?
-                                    </a>
-                                @endif
+{{--                                @if (Route::has('password.request'))--}}
+{{--                                    <a href="{{ route('password.request', app()->getLocale()) }}">--}}
+{{--                                        Забыли пароль?--}}
+{{--                                    </a>--}}
+{{--                                @endif--}}
                             </div>
                         </div>
                     </form>

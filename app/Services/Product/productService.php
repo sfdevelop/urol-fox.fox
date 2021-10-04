@@ -90,6 +90,7 @@ class productService
         $search=Product::withTranslation()
             ->whereTranslationLike('title', "%{$request->search}%")
             ->orWhere('articyl', 'like', "%{$request->search}%")
+            ->with('media')
             ->paginate(15);
 
         return$search;

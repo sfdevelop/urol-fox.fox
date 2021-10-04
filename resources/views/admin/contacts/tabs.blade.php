@@ -85,7 +85,7 @@
                             </div>
                             @enderror
                         </div>
-                        @include('layouts.admin.seo')
+{{--                        @include('layouts.admin.seo')--}}
                     </div>
 
                 @endforeach
