@@ -83,4 +83,15 @@ class productService
 
         return $character;
     }
+
+    public function search($request)
+    {
+
+        $search=Product::withTranslation()
+            ->whereTranslationLike('title', "%{$request->search}%")
+            ->orWhere('articyl', 'like', "%{$request->search}%")
+            ->paginate(15);
+
+        return$search;
+    }
 }

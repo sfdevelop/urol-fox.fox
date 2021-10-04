@@ -87,7 +87,13 @@
                         </div>
                     </div>
                     <div class="search d-xl-flex align-items-center ml-3 d-none ">
-                        <input class="px-2" type="text" name="search" id="">
+                        <form action="{{route('search')}}" method="GET">
+                            <input class="px-2"
+                                   type="text"
+                                   name="search"
+                                   id="search"
+                            >
+                        </form>
                     </div>
                     <div class="lang d-flex align-items-center ml-3">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

@@ -112,4 +112,11 @@ class urolController extends BaseController
 
         return view('urol.Pages.pages', compact('item'));
     }
+
+    public function search(Request $request)
+    {
+        $search=$this->product->search($request);
+
+        return view('urol.Search.search', compact('search','request'));
+    }
 }

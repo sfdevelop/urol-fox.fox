@@ -16,6 +16,11 @@ Breadcrumbs::for('contacts', function ($trail) {
     $trail->push(trans('menu.menu_contacts'), route('contacts'));
 });
 
+Breadcrumbs::for('search', function ($trail) {
+    $trail->parent('main');
+    $trail->push(__('search'), route('search'));
+});
+
 Breadcrumbs::for('news', function ($trail) {
     $trail->parent('main');
     $trail->push(trans('menu.menu_news'), route('news'));

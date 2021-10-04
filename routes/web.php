@@ -30,6 +30,7 @@ Route::group([
     Route::get('catalog/{slug}', 'urolController@catalog')->name('catalog');
     Route::get('product/{slug}', 'urolController@product')->name('product');
     Route::get('pages/{slug}', 'urolController@pages')->name('pages');
+    Route::get('search', 'urolController@search')->name('search');
 
     Route::post('question', 'questionController@store')->name('question');
     Route::post('question-contact', 'questionController@storeContact')->name('questionContact');
