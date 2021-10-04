@@ -115,6 +115,14 @@
             </a>
         </li>
 
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.order.index')}}">
+                <i class="material-icons dp48">local_phone</i>
+                <span class="menu-title" data-i18n="Form Layouts">Заказы</span>
+                @widget('countOrder')
+            </a>
+        </li>
+
     </ul>
 
     <div class="navigation-background"></div>

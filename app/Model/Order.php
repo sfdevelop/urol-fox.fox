@@ -12,5 +12,6 @@ class Order extends Model
         'price',
         'name',
         'phone',
+        'is_see',
     ];
 }

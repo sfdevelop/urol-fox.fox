@@ -60,6 +60,7 @@ Route::group([
         Route::resource('question', 'AdminQuestionController')->names('admin.question')->only('index','show', 'destroy');
         Route::resource('feed-back', 'AdminFeedBackController')->names('admin.feedBack')->only('index','show', 'destroy');
         Route::resource('call-back', 'AdminCallBackController')->names('admin.callBack')->only('index','show', 'destroy');
+        Route::resource('order', 'AdminOrderController')->names('admin.order')->only('index','show', 'destroy');
 
         Route::get('add-product-characteristic/{idProduct}','AdminController@addCharacteristicProduct')->name('admin.addCharacteristicProduct');
     });
