@@ -73,7 +73,7 @@ class AdminProductController extends Controller
         $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.product.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
+            return redirect()->route('admin.product.edit', $item->id)->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Теперь добавьте товару характеристики!."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }

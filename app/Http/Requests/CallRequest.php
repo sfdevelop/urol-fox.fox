@@ -25,7 +25,7 @@ class CallRequest extends FormRequest
     {
         return [
             'name'           => 'required|string',
-            'phone'          => 'required|min:10|max:13',
+            'phone'          => 'required|size:16|phone',
         ];
     }
 }

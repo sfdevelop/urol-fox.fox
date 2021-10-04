@@ -18,6 +18,8 @@
 @show
 <!--JS-->
 <script src="{{asset('assets/js/main.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.inputmask.min.js')}}"></script>
+<script src="{{asset('assets/js/all.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {
