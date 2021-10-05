@@ -42,7 +42,7 @@ class OrderNotification extends Notification
     {
         $message = $this->message;
         return (new MailMessage)
-            ->from(env('mail_from_address'))
+            ->from(env('MAIL_FROM_ADDRESS'))
             ->subject('Получен Заказ')
             ->greeting('Здравствуйте!')
             ->line('Новый заказ!')

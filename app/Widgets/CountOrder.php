@@ -2,14 +2,13 @@
 
 namespace App\Widgets;
 
-use App\Services\Count\CountService;
+use App\Model\Order;
+use App\Services\Order\orderService;
 use Arrilot\Widgets\AbstractWidget;
 
-class countQuestions extends AbstractWidget
+class CountOrder extends AbstractWidget
 {
-    private $questions;
-
-
+    private $order;
 
     /**
      * The configuration array.
@@ -19,11 +18,11 @@ class countQuestions extends AbstractWidget
     protected $config = [];
 
     /**
-     * @param $questions
+     * @param $order
      */
-    public function __construct(CountService $questions)
+    public function __construct(orderService $order)
     {
-        $this->questions = $questions;
+        $this->order = $order;
     }
 
     /**
@@ -32,11 +31,11 @@ class countQuestions extends AbstractWidget
      */
     public function run()
     {
-        $countQuestions=$this->questions->countQuestions();
+        $countOrder=$this->order->countNewOrder();
 
-        return view('widgets.count_questions', [
+        return view('widgets.count_order', [
             'config' => $this->config,
-            'countQuestions' => $countQuestions,
+            'countOrder' => $countOrder,
         ]);
     }
 }

@@ -8,12 +8,12 @@
 
 {{--@include('layouts.urol.menu')--}}
 
-@widget('menuWidget')
+@widget('MenuWidget')
 
 @yield('content')
 
 
-@widget('footerWidget')
+@widget('FooterWidget')
 @section('new-modal')
 @show
 <!--JS-->

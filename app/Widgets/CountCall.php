@@ -6,7 +6,7 @@ use App\Model\Call;
 use App\Services\Count\CountService;
 use Arrilot\Widgets\AbstractWidget;
 
-class countCall extends AbstractWidget
+class CountCall extends AbstractWidget
 {
     public $count;
 

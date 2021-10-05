@@ -2,15 +2,11 @@
 
 namespace App\Widgets;
 
-use App\Services\Count\CountService;
+use App\Services\Contacts\ContactsService;
 use Arrilot\Widgets\AbstractWidget;
 
-class countFeedBackWidget extends AbstractWidget
+class FooterWidget extends AbstractWidget
 {
-    private $massage;
-
-
-
     /**
      * The configuration array.
      *
@@ -18,13 +14,16 @@ class countFeedBackWidget extends AbstractWidget
      */
     protected $config = [];
 
+    private $contact;
+
     /**
-     * @param $massage
+     * @param $contact
      */
-    public function __construct(CountService $massage)
+    public function __construct(ContactsService $contact)
     {
-        $this->massage = $massage;
+        $this->contact = $contact;
     }
+
 
     /**
      * Treat this method as a controller action.
@@ -32,11 +31,11 @@ class countFeedBackWidget extends AbstractWidget
      */
     public function run()
     {
-        $messageCount=$this->massage->countMessage();
+        $contactFoot=$this->contact->ContactFoot();
 
-        return view('widgets.count_feed_back_widget', [
+        return view('widgets.footer_widget', [
             'config' => $this->config,
-            'messageCount' => $messageCount,
+            'contact' =>$contactFoot,
         ]);
     }
 }

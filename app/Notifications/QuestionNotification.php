@@ -44,7 +44,7 @@ class QuestionNotification extends Notification
     {
         $message = $this->message;
         return (new MailMessage)
-            ->from(env('mail_from_address'))
+            ->from(env('MAIL_FROM_ADDRESS'))
             ->subject('Получен вопрос')
             ->greeting('Здравствуйте!')
             ->line('Новый вопрос')

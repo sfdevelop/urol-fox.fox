@@ -5,7 +5,7 @@ namespace App\Widgets;
 use App\Services\Menu\menuService;
 use Arrilot\Widgets\AbstractWidget;
 
-class menuWidget extends AbstractWidget
+class MenuWidget extends AbstractWidget
 {
     /**
      * The configuration array.
