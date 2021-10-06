@@ -103,6 +103,8 @@ class AdminCharacteristicController extends Controller
      */
     public function destroy(Characteristic $characteristic)
     {
+
+        $characteristic->characterProduct()->detach();
         $result = $characteristic->delete();
 
         if ($result) {

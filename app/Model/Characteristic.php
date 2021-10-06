@@ -17,4 +17,9 @@ class Characteristic extends Model implements TranslatableContract
     protected $fillable = [
         'sort',
     ];
+
+    public function characterProduct(){
+        return $this->belongsToMany('App\Model\Characteristic','characteristic_products','characteristic_id');
+    }
+
 }
