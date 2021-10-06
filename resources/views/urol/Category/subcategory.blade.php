@@ -58,14 +58,14 @@
                                 <div class="price d-flex flex-column justify-content-center">
                                     <div class="old ">
                                         @if($product->price_sale)
-                                            {{$product->price}}
+                                            {{$product->price}} грн.
                                         @endif
                                     </div>
 
                                     @if($product->price_sale)
-                                        {{$product->price_sale}}
+                                        {{$product->price_sale}} грн.
                                     @else
-                                        {{$product->price}}
+                                        {{$product->price}} грн.
                                     @endif
                                 </div>
                                 <a href="{{route('product', $product->slug)}}" class="btn">{{__('show_more')}}</a>

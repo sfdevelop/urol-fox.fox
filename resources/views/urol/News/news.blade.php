@@ -13,7 +13,6 @@
         </div>
     </section>
     <section class="news">
-
         <div class="container">
             <div class="row">
                 @forelse($paginator as $item)
@@ -41,9 +40,8 @@
                             </div>
                         </div>
                     </div>
-
                 @empty
-                    acasac
+
                 @endforelse
             </div>
         </div>

@@ -24,9 +24,9 @@ class AdminContactsRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'phone1' => 'required|min:10|max:13',
-            'phone2' => 'min:10|max:13|nullable',
-            'phone3' => 'min:10|max:13|nullable',
+            'phone1' => 'required|min:10|max:17',
+            'phone2' => 'min:10|max:17|nullable',
+            'phone3' => 'min:10|max:17|nullable',
             'email' => 'required|email',
         ];
 

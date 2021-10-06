@@ -65,7 +65,7 @@ class AdminSliderController extends Controller
         $this->MultiUpdateAdminImages($request, $item, $this->modelCollections);
 
         if ($item) {
-            return redirect()->route('admin.news.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
+            return redirect()->route('admin.slider.create')->with(['success' => "Новая запись : [{$item['title']}] Успешно создана. Можете спокойно продолжать работу."]);
         } else {
             return back()->withErrors(['msg' => 'Что то пошло не так, Ваши данные не сохранились. Обратитесь в администратору.']);
         }

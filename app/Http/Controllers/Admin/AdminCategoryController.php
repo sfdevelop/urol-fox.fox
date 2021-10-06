@@ -25,7 +25,7 @@ class AdminCategoryController extends Controller
     {
         $this->modelCollections = 'category';
         $this->model = $model;
-        $this->category=$category;
+        $this->category = $category;
     }
 
 
@@ -52,7 +52,7 @@ class AdminCategoryController extends Controller
     {
         $item = new Category();
 
-        $categories=$this->categoryTrait();
+        $categories = $this->categoryTrait();
 
         $separator = '-';
 
@@ -87,15 +87,15 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        $item=$this->model->find($id);
+        $item = $this->model->find($id);
 
         $image = $this->AdminImages($item, $this->modelCollections);
 
-        $categories=$this->categoryTrait();
+        $categories = $this->categoryTrait();
 
         $separator = '-';
 
-        return view('admin.category.edit', compact('item','image', 'categories', 'separator'));
+        return view('admin.category.edit', compact('item', 'image', 'categories', 'separator'));
     }
 
     /**
@@ -108,7 +108,7 @@ class AdminCategoryController extends Controller
     public function update(AdminCategoryRequest $request, Category $category)
     {
 
-        $item=$category->update($request->all());
+        $item = $category->update($request->all());
 
         $this->MultiUpdateAdminImages($request, $category, $this->modelCollections);
 
@@ -129,7 +129,9 @@ class AdminCategoryController extends Controller
     {
         $category->clearMediaCollection($this->modelCollections);
 
-        $category->childrenCategories()->delete();
+        if ($category->childrenCategories()->count()>0) {
+            $category->childrenCategories()->delete();
+        }
 
         $result = $category->delete();
 

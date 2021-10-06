@@ -10,6 +10,7 @@ class postService
 
         $paginator = Post::withTranslation()
             ->with('media')
+            ->where('public', true)
             ->translated('en')
             ->oldest('sort')
             ->latest('id')
