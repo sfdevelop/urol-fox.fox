@@ -18,7 +18,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('layouts.admin_layouts');
+        return view('layouts.admin.video');
     }
 
     public function addCharacteristicProduct($idProduct)

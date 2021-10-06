@@ -1,7 +1,7 @@
 <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
     <div class="brand-sidebar">
         <h1 class="logo-wrapper">
-            <a class="brand-logo darken-1" href="#">
+            <a class="brand-logo darken-1" href="{{route('admin.enter')}}">
                 <img
                     class="hide-on-med-and-down"
                     src="{{asset('administrator/assets/images/logo/materialize-logo-color.png')}}"
