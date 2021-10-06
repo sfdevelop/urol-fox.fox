@@ -15,6 +15,13 @@
     <section class="items py-4">
         <div class="container">
             <div class="row">
+
+                @if($subcategory->count()>0)
+                    <div class=" col-12 ">
+                        <h3>{{__('brands')}}</h3>
+                    </div>
+                @endif
+
                 @foreach($subcategory as $item)
                     <div class="col-lg-2 col-6">
                         <div class="item pt-4  d-flex flex-column justify-content-between">
@@ -34,9 +41,22 @@
                     </div>
                 @endforeach
             </div>
+        </div>
 
+        @if($subcategory->count()>0)
+            <div class=" py-3 d-flex align-items-center mt-4">
+                <div class="container">
+                    <div class="col-12   ">
+                        <h3 class="">{{__("products")}}</h3>
+                    </div>
+                </div>
+            </div>>
+
+        @endif
+
+        <div class="container">
             <div class="row">
-                @foreach($categoryProduct as $product)
+                @forelse($categoryProduct as $product)
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                         <div class="item pt-4  d-flex flex-column justify-content-between">
                             <div class="position-relative">
@@ -72,7 +92,13 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12">
+                        <div class="alert alert-primary" role="alert">
+                            {{__('not_products')}}
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
 
