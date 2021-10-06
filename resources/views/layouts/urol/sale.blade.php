@@ -9,7 +9,7 @@
                 <div class="item pt-4 d-flex flex-column justify-content-between">
                     <div class="position-relative">
                         <div class="stick-sale position-absolute px-3">Акція</div>
-                        <a href="">
+                        <a href="{{route('product', $sale_item->slug)}}">
                             <picture>
                                 <source type="image/webp"
                                         srcset="{{$sale_item->getFirstMediaUrl('product', 'thumb-p')}}">
@@ -27,7 +27,7 @@
                             </div>
                             {{$sale_item->price_sale}} грн.
                         </div>
-                        <a href="" class="btn">Переглянути</a>
+                        <a href="{{route('product', $sale_item->slug)}}" class="btn">Переглянути</a>
                     </div>
                 </div>
             @endforeach

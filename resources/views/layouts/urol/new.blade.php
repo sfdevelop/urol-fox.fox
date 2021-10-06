@@ -10,7 +10,7 @@
                 <div class="item pt-4 d-flex flex-column justify-content-between">
                     <div class="position-relative">
                         <div class="stick-new position-absolute px-3">{{__('stick_new')}}</div>
-                        <a href="">
+                        <a href="{{route('product', $item->slug)}}">
                             <picture>
                                 <source type="image/webp"
                                         srcset="{{$item->getFirstMediaUrl('product', 'thumb-p')}}">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="item_footer mt-3 d-flex justify-content-between align-items-center">
                         <div class="price">{{$item->price}} грн.</div>
-                        <a href="" class="btn">{{__('more')}}</a>
+                        <a href="{{route('product', $item->slug)}}" class="btn">{{__('more')}}</a>
                     </div>
                 </div>
             @endforeach
