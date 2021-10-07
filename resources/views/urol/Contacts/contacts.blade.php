@@ -78,6 +78,12 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="d-lg-flex justify-content-between d-none">
+            <img class="img-fluid" src="{{asset('assets/i/west.png')}}" alt="west">
+            <img class="img-fluid" src="{{asset('assets/i/tractor.png')}}" alt="tractor">
+        </div>
+    </section>
 
 @endsection
 
