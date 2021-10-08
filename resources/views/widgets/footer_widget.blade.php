@@ -5,19 +5,12 @@
                 <img src="{{asset('assets/i/Logo2.svg')}}" alt="Logo2">
             </div>
 
-            <div class="link">
+            <div class="link d-none d-xl-block">
                 <ul class="px-0">
-                    <li>{{__('menu_main')}}</li>
-                    <li>{{__('menu_product')}}</li>
-                    <li>{{__('menu_service')}}</li>
-                </ul>
-            </div>
-
-            <div class="link">
-                <ul class="px-0">
-                    <li>{{__('menu_news')}}</li>
-                    <li>{{__('menu_pay')}}</li>
-                    <li>{{__('menu_contacts')}}</li>
+                    <li><a class="text-white" href="{{route('main') }}">{{__('menu_main')}}</a></li>
+                    <li><a class="text-white" href="{{route('news') }}">{{__('menu_news')}}</a></li>
+                    <li><a class="text-white" href="{{route('pages', 'oplata-i-dostavka') }}">{{__('menu_pay')}}</a></li>
+                    <li><a class="text-white" href="{{route('contacts') }}">{{__('menu_contacts')}}</a></li>
                 </ul>
             </div>
             <div class="phone d-flex justify-content-center justify-content-lg-start">
