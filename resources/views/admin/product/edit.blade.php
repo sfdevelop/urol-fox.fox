@@ -7,21 +7,21 @@
 @endif
 
 @section('new-css')
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.scss')}}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="{{asset('administrator/assets/css/pages/app-invoice.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admini_back/assets/css/pages/app-invoice.min.css')}}">
     @toastr_css
 @endsection
 
 @section('new-js')
-    <script src="{{asset('administrator/assets/js/scripts/form-elements.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/ui-alerts.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/form-elements.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/ui-alerts.min.js')}}"></script>
     <script src="{{ asset('vendor/japonline/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script src="{{asset('administrator/assets/vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/ajax/dataTablesCustom.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/advance-ui-modals.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/vendors/data-tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/ajax/dataTablesCustom.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/advance-ui-modals.min.js')}}"></script>
 
-    <script src="{{asset('administrator/assets/js/ajax/repeater.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/ajax/repeater.js')}}"></script>
 
     @toastr_js
     @toastr_render

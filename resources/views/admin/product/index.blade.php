@@ -3,18 +3,18 @@
 @section('title', 'Товары' )
 
 @section('new-css')
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/page-users.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/form-select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/vendors/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/pages/page-users.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/pages/form-select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/vendors/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css"
-          href="{{asset('administrator/assets/vendors/select2/select2-materialize.css')}}">
+          href="{{asset('admini_back/assets/vendors/select2/select2-materialize.css')}}">
 @endsection
 
 @section('new-js')
-    <script src="{{asset('administrator/assets/js/scripts/page-users.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/vendors/select2/select2.full.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/form-select2.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/page-users.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/vendors/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/form-select2.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.tooltipped').tooltip();

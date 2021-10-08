@@ -7,20 +7,20 @@
 @endif
 
 @section('new-css')
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.scss')}}">
 
-    <link rel="stylesheet" href="{{asset('administrator/assets/vendors/select2/select2.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('administrator/assets/vendors/select2/select2-materialize.css')}}" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/pages/form-select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admini_back/assets/vendors/select2/select2.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('admini_back/assets/vendors/select2/select2-materialize.css')}}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/pages/form-select2.min.css')}}">
 
 @endsection
 
 @section('new-js')
-    <script src="{{asset('administrator/assets/js/scripts/form-elements.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/ui-alerts.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/customizer.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/form-select2.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/vendors/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/form-elements.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/ui-alerts.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/customizer.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/form-select2.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/vendors/select2/select2.full.min.js')}}"></script>
     <script src="{{ asset('vendor/japonline/laravel-ckeditor/ckeditor.js') }}"></script>
 
     <script type="text/javascript">

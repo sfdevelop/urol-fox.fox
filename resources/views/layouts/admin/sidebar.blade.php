@@ -4,12 +4,12 @@
             <a class="brand-logo darken-1" href="{{route('admin.enter')}}">
                 <img
                     class="hide-on-med-and-down"
-                    src="{{asset('administrator/assets/images/logo/materialize-logo-color.png')}}"
+                    src="{{asset('admini_back/assets/images/logo/materialize-logo-color.png')}}"
                     alt=" logo"
                 />
                 <img
                     class="show-on-medium-and-down hide-on-med-and-up"
-                    src="{{asset('administrator/assets/images/logo/materialize-logo.png')}}" alt="logo"
+                    src="{{asset('admini_back/assets/images/logo/materialize-logo.png')}}" alt="logo"
                 />
                 <span
                     class="logo-text hide-on-med-and-down">

@@ -7,12 +7,12 @@
 @endif
 
 @section('new-css')
-    <link rel="stylesheet" type="text/css" href="{{asset('administrator/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.scss')}}">
 @endsection
 
 @section('new-js')
-    <script src="{{asset('administrator/assets/js/scripts/form-elements.min.js')}}"></script>
-    <script src="{{asset('administrator/assets/js/scripts/ui-alerts.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/form-elements.min.js')}}"></script>
+    <script src="{{asset('admini_back/assets/js/scripts/ui-alerts.min.js')}}"></script>
     <script src="{{ asset('vendor/japonline/laravel-ckeditor/ckeditor.js') }}"></script>
 
     <script type="text/javascript">
