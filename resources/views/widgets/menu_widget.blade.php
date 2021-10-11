@@ -86,7 +86,7 @@
                             </small>
                         </div>
                     </div>
-                    <div class="search d-xl-flex align-items-center ml-3 d-none ">
+                    <div class="search d-lg-flex align-items-center ml-3 d-none ">
                         <form action="{{route('search')}}" method="GET">
                             <input class="px-2"
                                    type="text"

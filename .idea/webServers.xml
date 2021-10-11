@@ -5,7 +5,14 @@
       <webServer id="4e718157-020f-4e52-ac91-8578dd0ffd95" name="urol_ftp" url="http://urol.in.ua">
         <fileTransfer host="urol.in.ua" port="21">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="861c9a52-3eca-415b-941f-b8b2fc033213" name="SSH">
+        <fileTransfer rootFolder="/home/admin/web/buhgalteria.pp.ua/public_html" accessType="SFTP" host="178.62.76.177" port="22" sshConfigId="e47f3679-3d3b-428f-b93d-53705680d437" sshConfig="admin@178.62.76.177:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
