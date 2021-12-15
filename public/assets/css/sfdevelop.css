@@ -1,0 +1,14 @@
+.menu_head .dropdown-menu.show{
+    max-width: 320px!important;
+    overflow: hidden;
+}
+.menu_head .dropdown-item{
+    white-space: break-spaces!important;
+}
+.menu_head  .nav-item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#main_nav{
+    margin-top: 15px;
+}

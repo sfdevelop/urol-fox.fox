@@ -2,17 +2,10 @@
 <project version="4">
   <component name="PublishConfigData" serverName="urol_ftp" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="SSH">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="urol_ftp">
         <serverdata>
           <mappings>
-            <mapping deploy="/public_html" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
