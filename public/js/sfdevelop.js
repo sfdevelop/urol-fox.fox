@@ -86,17 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ./sfdevelop */ "./resources/js/sfdevelop.js");
-
-/***/ }),
-
 /***/ "./resources/js/sfdevelop.js":
 /*!***********************************!*\
   !*** ./resources/js/sfdevelop.js ***!
@@ -120,10 +109,10 @@ $('.mobile_li').click(function (ev) {
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
+/***/ "./resources/sass/menu-mobile.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/menu-mobile.scss ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -132,14 +121,14 @@ $('.mobile_li').click(function (ev) {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!***************************************************************************!*\
+  !*** multi ./resources/js/sfdevelop.js ./resources/sass/menu-mobile.scss ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/sfdevelop/site/urol-fox.fox/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/sfdevelop/site/urol-fox.fox/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/sfdevelop/site/urol-fox.fox/resources/js/sfdevelop.js */"./resources/js/sfdevelop.js");
+module.exports = __webpack_require__(/*! /home/sfdevelop/site/urol-fox.fox/resources/sass/menu-mobile.scss */"./resources/sass/menu-mobile.scss");
 
 
 /***/ })

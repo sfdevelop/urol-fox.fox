@@ -1,4 +1,4 @@
-<section class="menu_head fixed-top">
+<section class="menu_head fixed-top d-none d-lg-block">
     <div class="container">
         <nav class="navbar navbar-expand-lg  justify-content-end w-100 fixed-top">
             <div class="d-flex justify-content-between w-100 d-lg-none">
@@ -95,3 +95,30 @@
         padding-right: 0;
     }
 </style>
+
+
+<div class="p-relative fon_top_contacts d-lg-none">
+    <div class="logo-menu ">
+        <img class="" src="{{asset('assets/i/logo.png')}}" alt="logo">
+    </div>
+    <div class="dropdown dropdown__menu">
+        <button class="dropdown-toggle btn-drpdown p-0 m-0" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{strtoupper(app()->getLocale())}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a
+                    class="dropdown-item"
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                >
+                    {{ $properties['native'] }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+    <a class="user_mobile" href="{{route('user.login')}}">
+        <img class="user mx-3" src="{{asset('assets/i/user2.svg')}}" alt="svg">
+    </a>
+    <div class="navBurger d-lg-none" role="navigation" id="navToggle"></div>
+</div>

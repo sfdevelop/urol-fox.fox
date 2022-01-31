@@ -1,0 +1,243 @@
+ .navBurger {
+ 	position: absolute;
+ 	right: 20px;
+ 	top: 30px;
+ 	cursor: pointer;
+ 	background: #000;
+ 	box-sizing: border-box;
+ 	background-clip: content-box;
+ 	width: 30px;
+ 	height: 24px;
+ 	border-top: 11px solid transparent;
+ 	border-bottom: 11px solid transparent;
+ 	-webkit-transform: rotate(0deg);
+ 	transform: rotate(0deg);
+ 	-webkit-transition: all 0.25s ease-in-out;
+ 	transition: all 0.25s ease-in-out;
+ 	z-index: 9999;
+
+ 	&:before,
+ 	&:after {
+ 		content: "";
+ 		position: absolute;
+ 		background: #000;
+ 		height: 2px;
+ 		width: 100%;
+ 		right: 0;
+ 		will-change: rotate;
+ 		-webkit-transform: rotate(0deg);
+ 		transform: rotate(0deg);
+ 		-webkit-transition: all 0.5s ease;
+ 		transition: all 0.5s ease;
+ 	}
+
+ 	&:before {
+ 		top: -10px;
+ 	}
+
+ 	&:after {
+ 		bottom: -10px;
+ 		width: 90%;
+ 	}
+
+ 	&.active {
+ 		background: transparent;
+ 		background-clip: content-box;
+ 	}
+
+ 	&.active:before {
+ 		-webkit-transform: rotate(135deg);
+ 		transform: rotate(135deg);
+ 		top: 0;
+ 		background: #eee;
+ 		width: 110%;
+ 	}
+
+ 	&.active:after {
+ 		bottom: 0;
+ 		-webkit-transform: rotate(-135deg);
+ 		transform: rotate(-135deg);
+ 		background: #eee;
+ 		width: 110%;
+ 	}
+ }
+
+ .overlay {
+
+ 	position: fixed;
+ 	background: rgba(0, 0, 0, 0.9);
+ 	top: 0;
+ 	right: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	opacity: 0;
+ 	transform-origin: right top;
+ 	transform: scale(0);
+ 	visibility: hidden;
+ 	transition: all 0.4s ease-in-out;
+ 	overflow: hidden;
+ 	z-index: 8888;
+
+ 	&.open {
+ 		opacity: 0.99;
+ 		visibility: visible;
+ 		transform: scale(1);
+ 		overflow-y: auto;
+
+ 		li {
+ 			display: block;
+ 			animation: fadeInRight 0.4s cubic-bezier(0.42, 0.83, 0.7, 1.5) forwards;
+ 			animation-delay: 0.4s;
+ 			transform: rotate(-7deg);
+ 			transform-origin: right bottom;
+
+ 			&:nth-of-type(2) {
+ 				animation-delay: 0.5s;
+ 			}
+
+ 			&:nth-of-type(3) {
+ 				animation-delay: 0.6s;
+ 			}
+
+ 			&:nth-of-type(4) {
+ 				animation-delay: 0.7s;
+ 			}
+
+ 			&:nth-of-type(5) {
+ 				animation-delay: 0.8s;
+ 			}
+
+ 			&:nth-of-type(6) {
+ 				animation-delay: 1s;
+ 			}
+ 		}
+ 	}
+ }
+
+ .overlayMenu {
+ 	position: absolute;
+ 	text-align: right;
+ 	//	left: 30px;
+ 	top: 70px;
+ 	margin-right: 30px;
+ 	text-align: left;
+ 	width: 94%;
+ 	overflow: hidden;
+
+
+ 	ul {
+ 		list-style: none;
+ 		padding: 0;
+ 		display: block;
+ 		position: relative;
+ 		height: 100%;
+ 		text-align: left !important;
+ 		//		background: red;
+ 		// 		left: 30px;
+
+ 		li {
+ 			display: block;
+ 			position: relative;
+ 			opacity: 0;
+ 			width: 100%;
+ 			text-align: left !important;
+
+ 			a {
+ 				display: inline-block;
+ 				//				border: 1px solid rgba(255, 255, 255, 0.09);
+ 				color: #fff;
+ 				text-decoration: none;
+ 				font-size: 18px !important;
+ 				//				padding: 10px 40px 10px 40px;
+ 				margin: 5px 0;
+ 				transition: 0.2s;
+ 				text-align: left !important;
+
+ 				//				&:hover,
+ 				//				&:active,
+ 				//				&:focus {
+ 				//					transform: translateX(-2px);
+ 				//					padding-left: 80px;
+ 				//					outline: 1px solid rgba(255, 255, 255, 0.3);
+ 				//					background: rgba(255, 255, 255, 0.03);
+ 				//				}
+ 			}
+ 		}
+ 	}
+ }
+
+ .locked {
+ 	overflow: hidden;
+ }
+
+ @keyframes fadeInRight {
+ 	0% {
+ 		opacity: 0;
+ 		left: 50px;
+ 	}
+
+ 	100% {
+ 		opacity: 1;
+ 		left: 0;
+ 		transform: rotate(0deg);
+ 	}
+ }
+
+ .mobile_menu {
+ 	.ul-menu {
+ 		// 		background: red;
+ 		position: relative;
+ 		display: block;
+ 		overflow: scroll;
+ 	}
+
+ 	.icon-arrowr {
+ 		float: right;
+ 		margin-top: 15px;
+ 		font-size: 35px;
+ 		transform: rotate(90deg);
+ 		margin-right: 35px;
+ 	}
+
+ 	ul {
+ 		width: 100%;
+ 		margin: 3px;
+
+ 		// 		border: 1px solid red;
+ 		.mobile_li {
+ 			border-bottom: 1px solid yellow;
+ 			width: 100%;
+ 			color: #fff;
+            font-family: Montserrat,sans-serif;
+ 			font-weight: normal;
+ 			font-size: 18px;
+
+
+ 			&:hover {
+ 				cursor: pointer;
+ 			}
+
+
+ 		}
+ 	}
+
+ 	ul ul {
+ 		display: none;
+
+ 		.icon-arrowr {
+ 			margin-right: 0px;
+ 		}
+
+ 		li {
+ 			padding-left: 10px;
+
+ 			&:last-child {
+ 				border-bottom: none;
+ 			}
+ 		}
+ 	}
+
+ 	ul li:hover > ul {
+ 		/*display:block;   */
+ 	}
+ }

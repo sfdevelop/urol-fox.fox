@@ -1,4 +1,4 @@
-<section class="menu_head fixed-top">
+<section class="menu_head fixed-top d-none d-lg-block">
     <div class="container">
         <nav class="navbar navbar-expand-lg  justify-content-end w-100 fixed-top">
             <div class="d-flex justify-content-between w-100 d-lg-none">
@@ -34,7 +34,8 @@
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('main') }}"> {{trans('menu.menu_main')}}</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">{{trans('menu.menu_product')}}</a>
+                        <a class="nav-link dropdown-toggle" href=""
+                           data-toggle="dropdown">{{trans('menu.menu_product')}}</a>
                         <ul class="dropdown-menu">
                             @foreach ($categories as $category)
                                 <li><a class="dropdown-item"
@@ -51,7 +52,8 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown"> {{trans('menu.menu_service')}} </a>
+                        <a class="nav-link dropdown-toggle" href=""
+                           data-toggle="dropdown"> {{trans('menu.menu_service')}} </a>
 
                         <ul class="dropdown-menu w-300">
                             @foreach ($services as $service)
@@ -67,7 +69,9 @@
                     </li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('news') }}"> {{trans('menu.menu_news')}} </a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('pages', 'oplata-i-dostavka') }}"> {{trans('menu.menu_pay')}}</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('pages', 'oplata-i-dostavka') }}"> {{trans('menu.menu_pay')}}</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('contacts') }}"> {{trans('menu.menu_contacts')}}</a>
                     </li>
@@ -108,4 +112,89 @@
         </nav>
     </div>
 </section>
+
+
+<div class="overlay pt-5">
+    <nav class="overlayMenu d-flex flex-column justify-content-between h90">
+        <div>
+            <div class="d-block mobile_menu">
+                <ul class="ml-4 ul-menu">
+                    <li class="mobile_li py-3">
+                        <a href="{{route('main')}}">{{trans('menu.menu_main')}}</a>
+                    </li>
+                    <li class="mobile_li py-3">
+                        {{trans('menu.menu_product')}}
+
+                        <ul class="p-0">
+
+                            @foreach ($categories as $category)
+
+                                <li class="mobile_li py-3">
+                                    <a href="{{route('catalog', $category->slug)}}">
+                                        {{$category->translate(app()->getLocale(), true)->title}}
+                                    </a>
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+                    </li>
+
+                    <li class="mobile_li py-3">
+                        {{trans('menu.menu_service')}}
+
+                        <ul class="p-0">
+
+                            @foreach ($services as $service)
+
+                                <li class="mobile_li py-3">
+                                    <a class=""
+                                       href="{{route('service', $service->slug)}} ">
+                                        {{$service->translate(app()->getLocale(), true)->title}}
+                                    </a>
+                                </li>
+
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="mobile_li py-3">
+                        <a class=""
+                           href="{{route('news') }}"> {{trans('menu.menu_news')}} </a>
+                    </li>
+                    <li class="mobile_li py-3">
+                        <a class=""
+                           href="{{route('pages', 'oplata-i-dostavka') }}"> {{trans('menu.menu_pay')}}</a>
+                    </li>
+                    <li class="mobile_li py-3">
+                        <a class=""
+                           href="{{route('contacts') }}"> {{trans('menu.menu_contacts')}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="p-relative fon_top_contacts d-flex justify-content-between align-content-center d-lg-none">
+    <div class="logo-menu ">
+        <img class="" src="{{asset('assets/i/logo.png')}}" alt="logo">
+    </div>
+    <div class="dropdown dropdown__menu d-flex flex-column justify-content-center">
+        <button class="dropdown-toggle btn-drpdown p-0 m-0" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{strtoupper(app()->getLocale())}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a
+                    class="dropdown-item"
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                >
+                    {{ $properties['native'] }}
+                </a>
+            @endforeach
+        </div>
+    </div>
+    <div class="navBurger d-lg-none" role="navigation" id="navToggle"></div>
+</div>
 

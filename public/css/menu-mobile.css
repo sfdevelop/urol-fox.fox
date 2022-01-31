@@ -3,7 +3,7 @@
   right: 20px;
   top: 30px;
   cursor: pointer;
-  background: #000;
+  background: #fff;
   box-sizing: border-box;
   background-clip: content-box;
   width: 30px;
@@ -19,7 +19,7 @@
 .navBurger:after {
   content: "";
   position: absolute;
-  background: #000;
+  background: #fff;
   height: 2px;
   width: 100%;
   right: 0;
@@ -204,7 +204,7 @@
   border-bottom: 1px solid yellow;
   width: 100%;
   color: #fff;
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat Alternates";
   font-weight: normal;
   font-size: 18px;
 }
@@ -231,23 +231,5 @@
 
 .mobile_menu ul li:hover > ul {
   /*display:block;   */
-}
-
-.logo-menu img {
-  max-width: 150px;
-  margin-left: 10px;
-}
-
-.fon_top_contacts .dropdown {
-  margin-right: 65px;
-}
-
-.fon_top_contacts .dropdown button {
-  border: none;
-  background: white;
-}
-
-.fon_top_contacts .navBurger {
-  margin-top: -10px;
 }
 

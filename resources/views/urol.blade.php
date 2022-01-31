@@ -20,6 +20,7 @@
 <script src="{{asset('assets/js/main.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.inputmask.min.js')}}"></script>
 <script src="{{asset('assets/js/all.js')}}"></script>
+<script src="{{asset('js/app.min.js')}}"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -58,6 +59,7 @@
             }
         });
     });
+
 </script>
 @section('new-js')
 @show
