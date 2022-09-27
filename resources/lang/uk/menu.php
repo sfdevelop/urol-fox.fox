@@ -18,5 +18,5 @@ return [
     "menu_pay"      =>"Доставка і оплата",
     "menu_contacts" =>"Контакти",
     "call_order"    =>"Замовити дзвінок",
-    "menu_news"     =>"Новини",
+    "menu_news"     =>"Про компанію",
 ];

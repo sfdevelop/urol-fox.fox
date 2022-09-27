@@ -53,7 +53,7 @@
         <li class="bold">
             <a class="waves-effect waves-cyan " href="{{route('admin.news.index')}}">
                 <i class="material-icons">receipt</i>
-                <span class="menu-title" data-i18n="Form Layouts">Новости</span>
+                <span class="menu-title" data-i18n="Form Layouts">О компании</span>
             </a>
         </li>
 
