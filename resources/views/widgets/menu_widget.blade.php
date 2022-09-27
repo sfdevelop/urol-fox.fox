@@ -177,23 +177,34 @@
 
 <div class="p-relative fon_top_contacts d-flex justify-content-between align-content-center d-lg-none">
     <div class="logo-menu ">
-        <img class="" src="{{asset('assets/i/logo.png')}}" alt="logo">
+        <a href="{{route('main')}}">
+            <img class="" src="{{asset('assets/i/logo.png')}}" alt="logo">
+        </a>
     </div>
-    <div class="dropdown dropdown__menu d-flex flex-column justify-content-center">
-        <button class="dropdown-toggle btn-drpdown p-0 m-0" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{strtoupper(app()->getLocale())}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                <a
-                    class="dropdown-item"
-                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
-                >
-                    {{ $properties['native'] }}
-                </a>
-            @endforeach
-        </div>
+    {{--    <div class="dropdown dropdown__menu d-flex flex-column justify-content-center">--}}
+    {{--        <button class="dropdown-toggle btn-drpdown p-0 m-0" type="button" id="dropdownMenuButton"--}}
+    {{--                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+    {{--            {{strtoupper(app()->getLocale())}}--}}
+    {{--        </button>--}}
+    {{--        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+    {{--            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)--}}
+    {{--                <a--}}
+    {{--                    class="dropdown-item"--}}
+    {{--                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"--}}
+    {{--                >--}}
+    {{--                    {{ $properties['native'] }}--}}
+    {{--                </a>--}}
+    {{--            @endforeach--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
+
+    <div class="d-flex align-items-center justify-content-center mr-5 pr-4">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a class="mx-1" rel="alternate" hreflang="{{ $localeCode }}"
+               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        @endforeach
     </div>
     <div class="navBurger d-lg-none" role="navigation" id="navToggle"></div>
 </div>
