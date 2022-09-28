@@ -9,8 +9,12 @@ use App\Http\Traits\CreateUpdateTraits;
 
 use App\Model\Product;
 use App\Services\Product\productService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
 
 class AdminProductController extends Controller
 {
@@ -33,7 +37,7 @@ class AdminProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
@@ -47,7 +51,7 @@ class AdminProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Application|Factory|\Illuminate\Http\Response|View
      */
     public function create()
     {
@@ -61,12 +65,10 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  AdminProductRequest  $request
+     * @return RedirectResponse
      */
-    public function store(AdminProductRequest $request)
+    public function store(AdminProductRequest $request): RedirectResponse
     {
         $item = $this->model->Create($request->all());
 
@@ -83,7 +85,7 @@ class AdminProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Application|Factory|\Illuminate\Http\Response|View
      */
     public function edit($id, Request $request)
     {
@@ -104,13 +106,11 @@ class AdminProductController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  AdminProductRequest  $request
+     * @param  Product  $product
+     * @return RedirectResponse
      */
-    public function update(AdminProductRequest $request, Product $product)
+    public function update(AdminProductRequest $request, Product $product): RedirectResponse
     {
         $this->product->deleteImage($request);
 
@@ -133,7 +133,7 @@ class AdminProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(Product $product)
     {

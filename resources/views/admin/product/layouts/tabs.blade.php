@@ -64,6 +64,25 @@
                     </div>
 
                 @endforeach
+                    <div class="col s12">
+                        <div class="input-field col s12 m6">
+                            <input type="hidden"
+                                   name="in_stock"
+                                   value="0"
+                            >
+                            <label>
+                                <input type="checkbox"
+                                       name="in_stock"
+                                       @if ($item->in_stock==1)
+                                           checked
+                                       @endif
+                                       value="1"
+                                    {{old ('in_stock')? 'checked': null}}
+                                >
+                                <span>В наличии</span>
+                            </label>
+                        </div>
+                    </div>
                 <div class="col s12">
                     <div class="input-field col s12 m6">
                         <input type="hidden"
@@ -89,6 +108,7 @@
                         !!}
                     </div>
                 </div>
+
                 <div class="col s12 file-field input-field">
                     <div class="btn float-left">
                         <span>Изображение</span>
