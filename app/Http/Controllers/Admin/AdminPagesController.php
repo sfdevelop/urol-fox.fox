@@ -8,6 +8,7 @@ use App\Http\Traits\AdminImagesTraits;
 use App\Http\Traits\CreateUpdateTraits;
 use App\Model\Pages;
 use App\Services\Pages\pagesService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminPagesController extends Controller
@@ -57,13 +58,11 @@ class AdminPagesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  AdminPagesRequest  $request
+     * @param $id
+     * @return RedirectResponse
      */
-    public function update(AdminPagesRequest $request, $id)
+    public function update(AdminPagesRequest $request, $id): RedirectResponse
     {
 
         $item=$this->model->find($id)->update($request->all());

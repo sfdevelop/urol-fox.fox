@@ -64,6 +64,13 @@
             </a>
         </li>
 
+        <li class="bold">
+            <a class="waves-effect waves-cyan " href="{{route('admin.comments.index')}}">
+                <i class="material-icons dp48">chat_bubble</i>
+                <span class="menu-title" data-i18n="Form Layouts">Комментарии</span>
+            </a>
+        </li>
+
         <li class="navigation-header">
             <a class="navigation-header-text">Каталог</a>
             <i class="navigation-header-icon material-icons">Каталог</i>
