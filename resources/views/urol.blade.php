@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.urol.meta')
+    @livewireStyle
+    @toastr_css
 </head>
 
 <body>
@@ -63,6 +65,20 @@
 </script>
 @section('new-js')
 @show
+
+@livewireScripts
+@toastr_js
+@toastr_render
+<script>
+    window.addEventListener('alert', event => {
+            toastr[event.detail.type](event.detail.message,
+                event.detail.title ?? ''), toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+            }
+        },
+    );
+</script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-194485737-2">
 </script>

@@ -51,22 +51,8 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href=""
-                           data-toggle="dropdown"> {{trans('menu.menu_service')}} </a>
-
-                        <ul class="dropdown-menu w-300">
-                            @foreach ($services as $service)
-                                <li class="overflow-hidden">
-                                    <a class="dropdown-item w-300"
-                                       href="{{route('service', $service->slug)}} ">
-                                        {{$service->translate(app()->getLocale(), true)->title}}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                    </li>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="{{route('comments') }}"> {{__('comment.comment')}} </a></li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('news') }}"> {{trans('menu.menu_news')}} </a></li>
                     <li class="nav-item"><a class="nav-link"
@@ -141,25 +127,13 @@
                     </li>
 
                     <li class="mobile_li py-3">
-                        {{trans('menu.menu_service')}}
-
-                        <ul class="p-0">
-
-                            @foreach ($services as $service)
-
-                                <li class="mobile_li py-3">
-                                    <a class=""
-                                       href="{{route('service', $service->slug)}} ">
-                                        {{$service->translate(app()->getLocale(), true)->title}}
-                                    </a>
-                                </li>
-
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="mobile_li py-3">
                         <a class=""
                            href="{{route('news') }}"> {{trans('menu.menu_news')}} </a>
+                    </li>
+
+                    <li class="mobile_li py-3">
+                        <a class=""
+                           href="{{route('comments') }}"> {{trans('comment.comment')}} </a>
                     </li>
                     <li class="mobile_li py-3">
                         <a class=""
