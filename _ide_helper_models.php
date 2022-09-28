@@ -525,6 +525,7 @@ namespace App\Model{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $in_stock
  * @property-read \App\Model\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read int|null $media_count
@@ -549,6 +550,7 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product whereInStock($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product wherePriceSale($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Product wherePublic($value)

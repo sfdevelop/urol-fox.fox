@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\Traits\Filterable;
+use App\Model\Traits\isStock;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -12,9 +13,12 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Product extends Model implements TranslatableContract ,HasMedia
+class Product extends Model implements TranslatableContract, HasMedia
 {
-    use Translatable, HasMediaTrait, Sluggable, SoftDeletes, Filterable;
+    use Translatable, HasMediaTrait, Sluggable, SoftDeletes, Filterable, isStock;
+
+    const IS_STOCK = 1;
+    const NOT_STOCK = 0;
 
     public function sluggable(): array
     {
@@ -40,13 +44,17 @@ class Product extends Model implements TranslatableContract ,HasMedia
         'public',
         'sort',
         'articyl',
+        'in_stock',
+    ];
+    protected $appends = [
+        'stock'
     ];
 
-    public function registerMediaCollections() {
+    public function registerMediaCollections()
+    {
         $this
             ->addMediaCollection('news')
             ->useFallbackUrl('/img/no-photo-600.jpg')
-
             ->useFallbackPath(public_path('/img/no-photo-600.jpg'));
 
         $this->addMediaConversion('big')

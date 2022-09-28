@@ -65,7 +65,7 @@ class productService
 
     public function showProduct($slug)
     {
-        $item=Product::withTranslation()
+        $item = Product::withTranslation()
             ->with('media')
             ->with('category')
             ->where('slug', $slug)
@@ -75,24 +75,24 @@ class productService
         return $item;
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function productCharacteristic($slug)
     {
-        $item=Product::where('slug',$slug)->firstOrFail('id');
+        $item = Product::where('slug', $slug)->firstOrFail('id');
 
-        $character=$this->show_characteristics($item->id);
-
-        return $character;
+        return $this->show_characteristics($item->id);
     }
 
     public function search($request)
     {
 
-        $search=Product::withTranslation()
+        return Product::withTranslation()
             ->whereTranslationLike('title', "%{$request->search}%")
             ->orWhere('articyl', 'like', "%{$request->search}%")
             ->with('media')
             ->paginate(15);
-
-        return$search;
     }
 }

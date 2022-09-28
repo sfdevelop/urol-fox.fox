@@ -50,16 +50,20 @@
                                data-product="{{$item->translate(app()->getLocale(), true)->title}}"
                                data-vendor="{{$item->articyl}}"
 
-                                @if($item->price_sale)
-                                    data-price="{{$item->price_sale}}"
-                                @else
-                                    data-price="{{$item->price}}"
+                               @if($item->price_sale)
+                                   data-price="{{$item->price_sale}}"
+                               @else
+                                   data-price="{{$item->price}}"
                                 @endif
 
                             >
                                 {{__('order_product')}}
                             </a>
                         </div>
+
+                    </div>
+                    <div class="small {{$item->in_stock ? 'text-success ' : 'text-danger'}} ">
+                        {{$item->stock}}
                     </div>
                     <div class="description my-4">
                         {!! $item->translate(app()->getLocale(), true)->description !!}
@@ -116,28 +120,28 @@
             }
         });
 
-        $('#order-form').on('submit', function(event){
+        $('#order-form').on('submit', function (event) {
             event.preventDefault();
             $('#name_order-error').text('');
             $('#phone_order-error').text('');
 
-            name    = $('#name_order').val();
-            phone   = $('#phone_order').val();
+            name = $('#name_order').val();
+            phone = $('#phone_order').val();
             product = $('#product').text();
-            vendor  = $('#vendor').text();
-            price   = $('#price').text();
+            vendor = $('#vendor').text();
+            price = $('#price').text();
 
             $.ajax({
                 url: "{{ route('addOrder') }}",
                 type: "POST",
-                data:{
-                    name:name,
-                    phone:phone,
-                    product:product,
-                    vendor:vendor,
-                    price:price,
+                data: {
+                    name: name,
+                    phone: phone,
+                    product: product,
+                    vendor: vendor,
+                    price: price,
                 },
-                success:function(response){
+                success: function (response) {
                     console.log(response);
                     if (response) {
                         $('#success-message').text(response.success);
@@ -147,7 +151,7 @@
                         $("#order-form")[0].reset();
                     }
                 },
-                error: function(response) {
+                error: function (response) {
                     $('#name_order-error').text(response.responseJSON.errors.name);
                     $('#phone_order-error').text(response.responseJSON.errors.phone);
                 }

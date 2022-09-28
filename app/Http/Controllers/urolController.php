@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Admin\BaseController;
 use App\Model\Slider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class urolController extends BaseController
 {
@@ -74,6 +77,10 @@ class urolController extends BaseController
         return view('urol.Service.service', compact('item'));
     }
 
+    /**
+     * @param $slug
+     * @return Application|Factory|View
+     */
     public function catalog($slug)
     {
         $category = $this->category->parentCategory($slug);
@@ -93,7 +100,11 @@ class urolController extends BaseController
         );
     }
 
-    public function product($slug)
+    /**
+     * @param $slug
+     * @return View
+     */
+    public function product($slug): View
     {
         $item = $this->product->showProduct($slug);
 
