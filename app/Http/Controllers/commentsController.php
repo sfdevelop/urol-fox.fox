@@ -14,7 +14,7 @@ class commentsController
      */
     public function index()
     {
-        $comments = Comment::latest('sort')->paginate();
+        $comments = Comment::whereIs_public(true)->latest('date')->paginate();
 
         return view('urol.Comments.comments', compact('comments'));
     }

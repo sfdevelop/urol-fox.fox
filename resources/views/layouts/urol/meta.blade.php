@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/style.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/app.min.css')}}">
-{{--<link rel="stylesheet" href="{{asset('assets/css/sfdevelop.scss')}}">--}}
+<link rel="stylesheet" href="{{asset('assets/css/sfdevelop.css')}}">
 
 {!! SEO::generate() !!}
 @section('css_blade')
