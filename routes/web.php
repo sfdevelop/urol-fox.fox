@@ -40,6 +40,7 @@ Route::group([
     Route::get('pages/{slug}', 'urolController@pages')->name('pages');
     Route::get('search', 'urolController@search')->name('search');
     Route::get('comments', 'commentsController@index')->name('comments');
+    Route::get('sale', 'SaleController@index')->name('sale');
 
     Route::post('question', 'questionController@store')->name('question');
     Route::post('question-contact', 'questionController@storeContact')->name('questionContact');

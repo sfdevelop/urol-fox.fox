@@ -52,6 +52,8 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link"
+                                            href="{{route('sale') }}"> {{__('comment.sale')}} </a></li>
+                    <li class="nav-item"><a class="nav-link"
                                             href="{{route('comments') }}"> {{__('comment.comment')}} </a></li>
                     <li class="nav-item"><a class="nav-link"
                                             href="{{route('news') }}"> {{trans('menu.menu_news')}} </a></li>
@@ -63,7 +65,7 @@
                     </li>
                 </ul>
                 <div class="right-menu d-lg-flex d-none">
-                    <div class="d-flex flex-column head-phone">
+                    <div class="d-none flex-column head-phone ">
                         <div>
                             <img src="{{asset('assets/i/call.svg')}}" alt="call">
                             <a href="tel:{{$head_phone->phone1}}">
@@ -124,6 +126,11 @@
                             @endforeach
 
                         </ul>
+                    </li>
+
+                    <li class="mobile_li py-3">
+                        <a class=""
+                           href="{{route('sale') }}"> {{__('comment.sale')}} </a>
                     </li>
 
                     <li class="mobile_li py-3">

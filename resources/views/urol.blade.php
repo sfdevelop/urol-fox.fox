@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.urol.meta')
-    @livewireStyle
+{{--    @livewireStyle--}}
     @toastr_css
 </head>
 
