@@ -44,6 +44,29 @@
                             @enderror
                         </div>
 
+                        <div class="input-field col s12">
+                            <input type="text"
+                                   name="{{$locale}}[short_desc]"
+                                   id="short_desc_{{ $locale }}"
+                                   value="{{old($locale.'.short_desc', $item->translate($locale)->short_desc ?? '')}}"
+                                   class="
+                                    @error($locale.".short_desc")
+                                       is-invalid
+                                    @enderror
+                                       "
+                            >
+                            <label
+                                for="short_desc_{{ $locale }}">
+                                Дополнительный заголовок
+                                ({{ strtoupper($locale) }})
+                            </label>
+                            @error($locale.".short_desc")
+                            <div
+                                class="alert alert-danger">{{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+
                         <div class="mt-4 input-field col s12">
 
                             <textarea name="{{ $locale }}[description]"

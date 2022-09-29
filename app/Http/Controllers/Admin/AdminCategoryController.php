@@ -8,7 +8,11 @@ use App\Http\Traits\AdminImagesTraits;
 use App\Http\Traits\CreateUpdateTraits;
 use App\Model\Category;
 use App\Services\Category\categoryService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminCategoryController extends Controller
 {
@@ -32,7 +36,7 @@ class AdminCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Application|Factory|\Illuminate\Http\Response|View
      */
     public function index()
     {
@@ -46,7 +50,7 @@ class AdminCategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Application|Factory|\Illuminate\Http\Response|View
      */
     public function create()
     {
@@ -60,12 +64,10 @@ class AdminCategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  AdminCategoryRequest  $request
+     * @return RedirectResponse
      */
-    public function store(AdminCategoryRequest $request)
+    public function store(AdminCategoryRequest $request): RedirectResponse
     {
 
         $item = $this->model->Create($request->all());
@@ -83,7 +85,7 @@ class AdminCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
+     * @return Factory|Application|View
      */
     public function edit($id)
     {
@@ -103,7 +105,7 @@ class AdminCategoryController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(AdminCategoryRequest $request, Category $category)
     {
@@ -123,7 +125,7 @@ class AdminCategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(Category $category)
     {

@@ -8,6 +8,8 @@
 
             <div class="title pt-3 pb-5 text-center">
                 <h1>{{$category->translate(app()->getLocale(), true)->title}}</h1>
+
+                <h5 class="text-white">{{$category->translate(app()->getLocale(), true)->short_desc}}</h5>
             </div>
 
         </div>

@@ -10,6 +10,7 @@ class CategoryTranslation extends Model
 
     protected $fillable = [
         'title',
+        'short_desc',
         'description',
         'seo_title',
         'seo_key',

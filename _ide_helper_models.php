@@ -277,6 +277,7 @@ namespace App\Model{
  * @property int $category_id
  * @property string $locale
  * @property string $title
+ * @property string|null $short_desc
  * @property string|null $description
  * @property string|null $seo_title
  * @property string|null $seo_key
@@ -294,6 +295,7 @@ namespace App\Model{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereSeoDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereSeoKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereSeoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereShortDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\CategoryTranslation whereUpdatedAt($value)
  */
@@ -527,6 +529,7 @@ namespace App\Model{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $in_stock
  * @property-read \App\Model\Category $category
+ * @property-read string $stock
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Model\ProductTranslation|null $translation
