@@ -12,11 +12,47 @@
 /*#main_nav{*/
 /*    margin-top: 15px;*/
 /*}*/
-.comment_box{
+.comment_box {
     box-shadow: 0 0 15px rgba(204, 204, 204, 0.64);
     border-radius: 15px;
 }
-.text-grey{
+
+.text-grey {
     color: rgb(157, 157, 157);
     font-size: 11px;
+}
+
+.product_sale {
+    background: rgba(204, 204, 204, 0.33);
+    padding: 15px;
+    border-radius: 10px;
+}
+.sale_from_product{
+    position: absolute;
+    bottom: 12%;
+}
+.sale_from_product > .countdownHolder {
+    width: 300px;
+    margin: 0 auto;
+    font: 25px/1.5 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    letter-spacing: -3px;
+}
+@media (min-width: 1594px) {
+    .sale_from_product{
+        bottom: 20%;
+    }
+}
+
+@media (max-width: 505px) {
+    .product_sale > .countdownHolder {
+        width: 300px;
+        margin: 0 auto;
+        font: 25px/1.5 'Open Sans Condensed', sans-serif;
+        text-align: center;
+        letter-spacing: -3px;
+    }
+    .sale_from_product{
+        bottom: 24%;
+    }
 }

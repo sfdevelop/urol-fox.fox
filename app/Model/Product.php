@@ -45,9 +45,11 @@ class Product extends Model implements TranslatableContract, HasMedia
         'sort',
         'articyl',
         'in_stock',
+        'updated_at',
     ];
     protected $appends = [
-        'stock'
+        'stock',
+        'millisecond'
     ];
 
     public function registerMediaCollections()
@@ -75,9 +77,28 @@ class Product extends Model implements TranslatableContract, HasMedia
             ->background('FFFFFF');
     }
 
+    /**
+     * @return mixed
+     */
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id')
             ->withTranslation();
+    }
+
+    /**
+     * @return void
+     */
+    public function updateTime()
+    {
+        $this->update(['updated_at' => now(),]);
+    }
+
+    /**
+     * @return int
+     */
+    public function getMillisecondAttribute(): int
+    {
+        return $this->updated_at->addDays(3)->getTimestampMs();
     }
 }

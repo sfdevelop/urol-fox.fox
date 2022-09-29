@@ -65,6 +65,14 @@
                     <div class="small {{$item->in_stock ? 'text-success ' : 'text-danger'}} ">
                         {{$item->stock}}
                     </div>
+
+                    @if ($item->price_sale)
+                        <div class="mt-4 product_sale">
+                            <h5>До кінця акції:</h5>
+                            @include('Partials.cownDown')
+                        </div>
+                    @endif
+
                     <div class="description my-4">
                         {!! $item->translate(app()->getLocale(), true)->description !!}
                     </div>
@@ -96,6 +104,10 @@
 
 @section('new-modal')
     @include('layouts.modal.order')
+@endsection
+
+@section('css_blade')
+    <link rel="stylesheet" href="{{asset('css/covnDown/covnDown.css')}}">
 @endsection
 
 @section('new-js')
@@ -158,5 +170,37 @@
             });
         });
 
+    </script>
+
+    <script src="{{asset('js/cownDown/covnDown.js')}}"></script>
+
+    <script !src="">
+        $(function () {
+            var note = $('#note'),
+                ts = {{$item->millisecond}}
+                    newYear = false;
+
+            $('#countdown').countdown({
+                timestamp: ts,
+                callback: function (days, hours, minutes, seconds) {
+
+                    var message = "";
+
+                    message += days + " day" + (days == 1 ? '' : 's') + ", ";
+                    message += hours + " hour" + (hours == 1 ? '' : 's') + ", ";
+                    message += minutes + " minute" + (minutes == 1 ? '' : 's') + " and ";
+                    message += seconds + " second" + (seconds == 1 ? '' : 's') + " <br />";
+
+                    if (newYear) {
+                        message += "left until the new year!";
+                    } else {
+                        message += "left to 10 days from now!";
+                    }
+
+                    note.html(message);
+                }
+            });
+
+        });
     </script>
 @endsection

@@ -5,6 +5,8 @@ namespace App\Services\Product;
 use App\Http\Filters\ProductFilter;
 use App\Model\CharacteristicProduct;
 use App\Model\Product;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\Models\Media;
 
 class productService
@@ -63,6 +65,10 @@ class productService
         return $character;
     }
 
+    /**
+     * @param $slug
+     * @return Product|Builder|Model
+     */
     public function showProduct($slug)
     {
         $item = Product::withTranslation()
@@ -71,6 +77,10 @@ class productService
             ->where('slug', $slug)
             ->where('public', true)
             ->firstOrFail();
+
+        if ($item->price_sale !== null) {
+            $this->saleCrownDown($item);
+        }
 
         return $item;
     }
@@ -94,5 +104,16 @@ class productService
             ->orWhere('articyl', 'like', "%{$request->search}%")
             ->with('media')
             ->paginate(15);
+    }
+
+    /**
+     * @param $updated_at
+     * @return void
+     */
+    private function saleCrownDown($item)
+    {
+        if ($item->updated_at->addDays(3) < now()) {
+            $item->updateTime();
+        }
     }
 }
