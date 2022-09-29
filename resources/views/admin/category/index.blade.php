@@ -4,7 +4,7 @@
 
 @section('new-css')
     <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/pages/page-users.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.scss')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admini_back/assets/css/themes/sfdevelop.css')}}">
 @endsection
 
 @section('new-js')

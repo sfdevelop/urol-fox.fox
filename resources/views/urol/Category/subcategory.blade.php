@@ -15,7 +15,9 @@
     <section class="items py-4">
         <div class="container">
             <div class="row">
-
+                <div class="div">
+                    {!! $category->translate(app()->getLocale(), true)->description  !!}
+                </div>
                 @if($subcategory->count()>0)
                     <div class=" col-12 ">
                         <h3>{{__('brands')}}</h3>

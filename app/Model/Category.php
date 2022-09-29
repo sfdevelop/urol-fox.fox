@@ -25,6 +25,7 @@ class Category extends Model implements TranslatableContract ,HasMedia
 
     public $translatedAttributes = [
         'title',
+        'description',
         'seo_title',
         'seo_key',
         'seo_description'

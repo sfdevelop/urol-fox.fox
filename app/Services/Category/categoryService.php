@@ -4,6 +4,8 @@ namespace App\Services\Category;
 
 use App\Model\Category;
 use App\Model\Product;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class categoryService
 {
@@ -32,14 +34,16 @@ class categoryService
         return $categories;
     }
 
+    /**
+     * @param $slug
+     * @return Category|Builder|Model|object|null
+     */
     public function parentCategory($slug)
     {
-        $id_parent = Category::withTranslation()
+        return Category::withTranslation()
             ->with('parentCategory')
             ->where('slug', $slug)
             ->first();
-
-        return $id_parent;
     }
 
     public function subCategory($category)
